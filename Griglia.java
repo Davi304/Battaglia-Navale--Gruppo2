@@ -38,7 +38,7 @@ public class Griglia extends JFrame implements ActionListener
         add(panelNavi, BorderLayout.SOUTH);
         setTitle("Battaglia navale");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1000, 1000);
+        setSize(500, 500);
         setVisible(true);
     }
 
