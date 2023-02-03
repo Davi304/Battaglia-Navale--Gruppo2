@@ -22,7 +22,7 @@ public class Nave
             posizioneY= new int [1];
         }
 
-        else{// in caaso sia verticale entra nell'else
+        else{// in caso sia verticale entra nell'else
             posizioneX= new int [1];
             posizioneY= new int [grandezza];
         }
@@ -78,4 +78,5 @@ public class Nave
             return false;
         }
     }
+
 }
