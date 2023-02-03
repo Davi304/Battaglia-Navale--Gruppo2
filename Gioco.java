@@ -5,10 +5,8 @@ public class Gioco
     Nave navi[] = new Nave[5];
     //Griglia griglia = new Griglia();
 
-
     public Gioco()
     {
-
 
         for(int i=0; i<5; i++)
         {
