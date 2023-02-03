@@ -15,6 +15,7 @@ public class Griglia extends JFrame implements ActionListener
     Random rand = new Random();
     int grandezza, posizioneX[] = new int[5], posizioneY[] = new int[5];
     boolean orizontale;
+    boolean[][] griglia = new boolean[10][10];
 
     public Griglia()
     {
@@ -38,6 +39,14 @@ public class Griglia extends JFrame implements ActionListener
 
 
         //Navi
+        for(int i=0; i<10; i++)
+        {
+            for(int j=0; j<10; j++)
+            {
+                griglia[i][j] = false; //setta tutta la griglia su false perchè non ci sono ancora navi
+            }
+        }
+
         for(int i=0; i<5; i++)
         {
             do
@@ -91,8 +100,22 @@ public class Griglia extends JFrame implements ActionListener
                     posizioneX[0] = rand.nextInt(10);
                 }
 
-            }while(controllaPosizione(navi[i]) == false);
+            }while(controllaPosizione() == false);
 
+            if(orizontale == true)
+            {
+                for(int j=0; i<grandezza; i++)
+                {
+                    griglia[posizioneX[j]][posizioneY[0]] = true; //inserisce nella griglia le navi
+                }
+            }
+            else
+            {
+                for(int j=0; i<grandezza; i++)
+                {
+                    griglia[posizioneX[0]][posizioneY[j]] = true; //inserisce nella griglia le navi
+                }
+            }
             navi[i] = new Nave(posizioneX, posizioneY, grandezza, orizontale);
         }
 
@@ -105,10 +128,18 @@ public class Griglia extends JFrame implements ActionListener
         setVisible(true);
     }
 
-    public boolean controllaPosizione(Nave nave)
+    /*public boolean controllaPosizione() //ritorna true se la posizione della nave è libera
     {
+        boolean controllaPosizione = true; 
 
-    }
+        for(int i=0; i<10; i++)
+        {
+            for(int j=0; j<10; j++)
+            {
+                //devo aggiungere il controllo con gli if
+            }
+        }
+    }*/
 
     public void actionPerformed(ActionEvent e) 
     {
