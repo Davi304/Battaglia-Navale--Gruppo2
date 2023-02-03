@@ -33,7 +33,6 @@ public class Griglia extends JFrame implements ActionListener
             bottoni[i][0].setIcon(new ImageIcon("Immagini/casella-nome.jpg"));
         }
         
-
         fuoco.setText("Fuoco");
         panelNavi.add(fuoco);
 
@@ -113,7 +112,11 @@ public class Griglia extends JFrame implements ActionListener
 
     public void actionPerformed(ActionEvent e) 
     {
-    
+       for(int i=0; i<11; i++){
+            for(int j=0; j<11; j++){
+                bottoni[i][j].setBackground(Color.ORANGE);
+            }
+       }
         
     }
 
