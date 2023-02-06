@@ -5,6 +5,5 @@ public class Battaglia_Navale
         //Il main richiama soltanto la classe principale Gioco
 
         Griglia griglia = new Griglia();
-        griglia.actionPerformed(null);
     }
 }

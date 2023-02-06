@@ -100,7 +100,7 @@ public class Griglia extends JFrame implements ActionListener
                     posizioneX[0] = rand.nextInt(10);
                 }
 
-            }while(controllaPosizione() == false);
+            }while(controllaPosizione(posizioneX, posizioneY, orizontale, grandezza) == false);
 
             if(orizontale == true)
             {
@@ -128,18 +128,31 @@ public class Griglia extends JFrame implements ActionListener
         setVisible(true);
     }
 
-    /*public boolean controllaPosizione() //ritorna true se la posizione della nave è libera
+    public boolean controllaPosizione(int[] posizioneX, int[] posizioneY, boolean orizontale, int grandezza) //ritorna true se la posizione della nave è libera
     {
         boolean controllaPosizione = true; 
 
-        for(int i=0; i<10; i++)
+        for(int i=0; i<grandezza; i++)
         {
-            for(int j=0; j<10; j++)
+            if(orizontale == true) //la nave è orizzontale
             {
-                //devo aggiungere il controllo con gli if
+                if(griglia[posizioneX[i]][posizioneY[0]] == true) //se è true vuol dire che c'è gia un'altra nave
+                {
+                    controllaPosizione = false; //lo mette a false per dire che lo spazio è gia occupato
+                }
+            }
+
+            else //la nave è verticale
+            {
+                if(griglia[posizioneX[0]][posizioneY[i]] == true) //se è true vuol dire che c'è gia un'altra nave
+                {
+                    controllaPosizione = false; //lo mette a false per dire che lo spazio è gia occupato
+                }
             }
         }
-    }*/
+
+        return controllaPosizione;
+    }
 
     public void actionPerformed(ActionEvent e) 
     {
