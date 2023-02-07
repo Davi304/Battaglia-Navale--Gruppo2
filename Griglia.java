@@ -33,6 +33,8 @@ public class Griglia extends JFrame implements ActionListener
             bottoni[0][i].setIcon(new ImageIcon("Immagini/casella-nome.jpg"));
             bottoni[i][0].setIcon(new ImageIcon("Immagini/casella-nome.jpg"));
         }
+
+
         
         fuoco.setText("Fuoco");
         panelNavi.add(fuoco);
@@ -63,14 +65,14 @@ public class Griglia extends JFrame implements ActionListener
                     {
                         for(int j=1; j<grandezza; j++)
                         {
-                            posizioneX[j] = posizioneX[j-1]++;
+                            posizioneX[j] = posizioneX[j-1] + 1;
                         }
                     }
                     else
                     {
                         for(int j=1; j<grandezza; j++)
                         {
-                            posizioneX[j] = posizioneX[j-1]--;
+                            posizioneX[j] = posizioneX[j-1] - 1;
                         }
                     }
 
@@ -86,14 +88,14 @@ public class Griglia extends JFrame implements ActionListener
                     {
                         for(int j=1; j<grandezza; j++)
                         {
-                            posizioneY[j] = posizioneY[j-1]++;
+                            posizioneY[j] = posizioneY[j-1] + 1;
                         }
                     }
                     else
                     {
                         for(int j=1; j<grandezza; j++)
                         {
-                            posizioneY[j] = posizioneY[j-1]--;
+                            posizioneY[j] = posizioneY[j-1] - 1;
                         }
                     }
 
@@ -117,7 +119,9 @@ public class Griglia extends JFrame implements ActionListener
                 }
             }
             navi[i] = new Nave(posizioneX, posizioneY, grandezza, orizontale);
+
         }
+
 
         //Frame
         add(panelCaselle, BorderLayout.CENTER);
