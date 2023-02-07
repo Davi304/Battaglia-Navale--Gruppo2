@@ -104,14 +104,14 @@ public class Griglia extends JFrame implements ActionListener
 
             if(orizontale == true)
             {
-                for(int j=0; i<grandezza; i++)
+                for(int j=0; j<grandezza; j++)
                 {
                     griglia[posizioneX[j]][posizioneY[0]] = true; //inserisce nella griglia le navi
                 }
             }
             else
             {
-                for(int j=0; i<grandezza; i++)
+                for(int j=0; j<grandezza; j++)
                 {
                     griglia[posizioneX[0]][posizioneY[j]] = true; //inserisce nella griglia le navi
                 }
