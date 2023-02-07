@@ -32,11 +32,22 @@ public class Griglia extends JFrame implements ActionListener
         {
             bottoni[0][i].setIcon(new ImageIcon("Immagini/casella-nome.jpg"));
             bottoni[i][0].setIcon(new ImageIcon("Immagini/casella-nome.jpg"));
+            bottoni[0][0].setText("");
+            bottoni[i][0].setText(""+(i));
+            bottoni[0][1].setText("A");
+            bottoni[0][2].setText("B");
+            bottoni[0][3].setText("C");
+            bottoni[0][4].setText("D");
+            bottoni[0][5].setText("E");
+            bottoni[0][6].setText("F");
+            bottoni[0][7].setText("G");
+            bottoni[0][8].setText("H");
+            bottoni[0][9].setText("I");
+            bottoni[0][10].setText("L");
         }
         
         fuoco.setText("Fuoco");
         panelNavi.add(fuoco);
-
 
         //Navi
         for(int i=0; i<10; i++)
@@ -124,8 +135,9 @@ public class Griglia extends JFrame implements ActionListener
         add(panelNavi, BorderLayout.SOUTH);
         setTitle("Battaglia navale");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500, 500);
+        setSize(600, 600);
         setVisible(true);
+        setLocationRelativeTo(null);
     }
 
     public boolean controllaPosizione(int[] posizioneX, int[] posizioneY, boolean orizontale, int grandezza) //ritorna true se la posizione della nave è libera
