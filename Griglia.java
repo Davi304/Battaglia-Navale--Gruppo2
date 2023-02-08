@@ -176,15 +176,6 @@ public class Griglia extends JFrame implements ActionListener
 
     public void actionPerformed(ActionEvent e) 
     {
-       for(int i=1; i<11; i++)
-       {
-            for(int j=1; j<11; j++)
-            {
-                bottoni[i][j].setBackground(Color.ORANGE);
-            }
-       }
-        
+       
     }
-
-
 }
