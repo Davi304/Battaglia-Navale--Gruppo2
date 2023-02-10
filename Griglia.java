@@ -14,6 +14,7 @@ public class Griglia extends JFrame implements ActionListener
     Nave navi[] = new Nave[5];
     Random rand = new Random();
     int grandezza, posizioneX[] = new int[5], posizioneY[] = new int[5];
+    int x,y;
     boolean orizontale;
     boolean[][] griglia = new boolean[10][10];
 
@@ -185,6 +186,39 @@ public class Griglia extends JFrame implements ActionListener
 
     public void actionPerformed(ActionEvent e) 
     {
-       
+        boolean colpito = false;
+
+        if(e.getSource() instanceof Bottoni) //capisce se è stato premuto un bottone
+        {
+            if( ((Bottoni) e.getSource()).getPremuto() == false) //controlla se il bottone è stato premuto
+            {
+                x = ((Bottoni) e.getSource()).getCoordinataX();
+                y = ((Bottoni) e.getSource()).getCoordinataY();
+
+                for(int i=0; i<5; i++)
+                {
+                    if(navi[i].colpito(x, y) == true)
+                    {
+                        colpito = true; //se colpisce almeno una nave lo segna su colpito
+                    }
+                }
+
+                if(colpito == true)
+                {
+                    ((Bottoni) e.getSource()).setIcon(new ImageIcon("Immagini/o.jpg"));
+                }
+                else
+                {
+                    ((Bottoni) e.getSource()).setIcon(new ImageIcon("Immagini/x.jpg"));
+                }
+            }
+
+            else
+            {
+                //Il pulsante è gia stato premuto
+            }
+        }
+        
+       //prendo i valori della x e della y del bottone schiacciato
     }
 }

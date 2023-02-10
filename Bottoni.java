@@ -4,8 +4,9 @@ public class Bottoni extends JButton
 {
     //La classe bottoni la usiamo per creare la griglia di bottoni
     
-    int x;
-    int y;
+    private int x;
+    private int y;
+    private boolean premuto;
 
     public Bottoni(int x, int y, ImageIcon icona) //crea i bottoni del mare
     {
@@ -13,6 +14,8 @@ public class Bottoni extends JButton
         this.y = y;
 
         this.setIcon(icona);
+
+        premuto = false;
     }
 
     public Bottoni(String testo) //crea i bottoni del testo
@@ -23,5 +26,23 @@ public class Bottoni extends JButton
         this.setText(testo);
     }
 
+    public int getCoordinataX()
+    {
+        return x;
+    }
+
+    public int getCoordinataY()
+    {
+        return y;
+    }
     
+    public boolean getPremuto()
+    {
+        return premuto;
+    }
+
+    public void pulsanatePremuto()
+    {
+        premuto = true;
+    }
 }
