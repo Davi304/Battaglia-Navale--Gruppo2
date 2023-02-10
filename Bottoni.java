@@ -41,7 +41,7 @@ public class Bottoni extends JButton
         return premuto;
     }
 
-    public void pulsanatePremuto()
+    public void pulsantePremuto()
     {
         premuto = true;
     }
