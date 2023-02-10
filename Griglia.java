@@ -78,6 +78,14 @@ public class Griglia extends JFrame implements ActionListener
         {
             do
             {
+                for(int h=0; h<5; h++)
+                {
+                    posizioneX[h] = 0;
+                    posizioneY[h] = 0;
+                }
+                
+
+
                 grandezza = i+1; //sceglie la grandezza
 
                 orizontale = rand.nextBoolean(); //decide se è orizzontale o verticale
@@ -195,13 +203,13 @@ public class Griglia extends JFrame implements ActionListener
                 x = ((Bottoni) e.getSource()).getCoordinataX();
                 y = ((Bottoni) e.getSource()).getCoordinataY();
 
-                for(int i=0; i<5; i++)
+            
+                if(griglia[x][y] == true)
                 {
-                    if(navi[i].colpito(x, y) == true)
-                    {
-                        colpito = true; //se colpisce almeno una nave lo segna su colpito
-                    }
+                    colpito = true; //se colpisce almeno una nave lo segna su colpito
                 }
+            
+                
 
                 if(colpito == true)
                 {

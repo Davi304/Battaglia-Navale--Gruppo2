@@ -2,7 +2,7 @@ public class Nave
 {
     //La classe nave genera una nave che sa la propria posizione, la grandezza e capisce se è stata colpita
 
-    int[] posizioneX;//righa
+    int[] posizioneX;//righe
     int[] posizioneY;//colonne
 
     int grandezza=0;
@@ -16,7 +16,7 @@ public class Nave
         this.orizzontale=orizontale;
         this.grandezza=grandezza;
 
-        if ( orizzontale= true)
+        /*if ( orizzontale= true)
         {// in caso sia orizzontale allora entra nel if 
             posizioneX= new int [grandezza];
             posizioneY= new int [1];
@@ -25,7 +25,7 @@ public class Nave
         else{// in caso sia verticale entra nell'else
             posizioneX= new int [1];
             posizioneY= new int [grandezza];
-        }
+        }*/
 
         this.posizioneX=posizioneX;//dopo aver creato gli spazi per i dati della posizione li riempiamo
         this.posizioneY=posizioneY;
