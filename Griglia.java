@@ -210,7 +210,6 @@ public class Griglia extends JFrame implements ActionListener
                 }
             
                 
-
                 if(colpito == true)
                 {
                     ((Bottoni) e.getSource()).setIcon(new ImageIcon("Immagini/o.jpg"));
