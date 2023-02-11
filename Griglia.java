@@ -200,9 +200,11 @@ public class Griglia extends JFrame implements ActionListener
         {
             if( ((Bottoni) e.getSource()).getPremuto() == false) //controlla se il bottone è stato premuto
             {
+                //prendo i valori della x e della y del bottone schiacciato
                 x = ((Bottoni) e.getSource()).getCoordinataX();
                 y = ((Bottoni) e.getSource()).getCoordinataY();
 
+                ((Bottoni) e.getSource()).pulsantePremuto(); //segn il pulsante come premuto
             
                 if(griglia[x][y] == true)
                 {
@@ -226,6 +228,6 @@ public class Griglia extends JFrame implements ActionListener
             }
         }
         
-       //prendo i valori della x e della y del bottone schiacciato
+      
     }
 }
