@@ -8,12 +8,10 @@ public class Bottoni extends JButton
     private int y;
     private boolean premuto;
 
-    public Bottoni(int x, int y, ImageIcon icona) //crea i bottoni del mare
+    public Bottoni(int x, int y) //crea i bottoni del mare
     {
         this.x = x;
         this.y = y;
-
-        this.setIcon(icona);
 
         premuto = false;
     }
