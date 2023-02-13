@@ -8,13 +8,14 @@ public class Griglia extends JFrame implements ActionListener
     //La classe griglia crea la griglia di gioco con le matrici che stava facendo Andrea
     
     JPanel panelCaselle = new JPanel(new GridLayout(11,11));
-    JPanel panelNavi = new JPanel();
+    JPanel testo = new JPanel();
+    JLabel counter = new JLabel(), info = new JLabel();
     Bottoni[][] bottone = new Bottoni[11][11];
     JButton fuoco = new JButton();
     Nave navi[] = new Nave[5];
     Random rand = new Random();
-    int grandezza, posizioneX[] = new int[5], posizioneY[] = new int[5];
-    int x,y;
+    int grandezza, posizioneX[][] = new int[5][5], posizioneY[][] = new int[5][5];
+    int x,y, indice;
     boolean orizontale;
     boolean[][] griglia = new boolean[10][10];
     Font f = new Font("Helvetica", Font.BOLD,20);
@@ -66,8 +67,6 @@ public class Griglia extends JFrame implements ActionListener
             }
         }
         
-        fuoco.setText("Fuoco");
-        panelNavi.add(fuoco);
 
         //Navi
         for(int i=0; i<10; i++)
@@ -80,12 +79,15 @@ public class Griglia extends JFrame implements ActionListener
 
         for(int i=0; i<5; i++)
         {
+            
             do
             {
+                indice = i;
+
                 for(int h=0; h<5; h++)
                 {
-                    posizioneX[h] = 0;
-                    posizioneY[h] = 0;
+                    posizioneX[h][indice] = 0;
+                    posizioneY[h][indice] = 0;
                 }
                 
 
@@ -96,73 +98,73 @@ public class Griglia extends JFrame implements ActionListener
 
                 if(orizontale == true) //orizzontale
                 {
-                    posizioneX[0] = rand.nextInt(10);
+                    posizioneX[0][indice] = rand.nextInt(10);
                 
-                    if(posizioneX[0] < 5)
+                    if(posizioneX[0][indice] < 5)
                     {
                         for(int j=1; j<grandezza; j++)
                         {
-                            posizioneX[j] = posizioneX[j-1] + 1;
+                            posizioneX[j][indice] = posizioneX[j-1][indice] + 1;
                         }
                     }
                     else
                     {
                         for(int j=1; j<grandezza; j++)
                         {
-                            posizioneX[j] = posizioneX[j-1] - 1;
+                            posizioneX[j][indice] = posizioneX[j-1][indice] - 1;
                         }
                     }
 
-                    posizioneY[0] = rand.nextInt(10);
+                    posizioneY[0][indice] = rand.nextInt(10);
                 }
                 
 
                 else    //verticale
                 {
-                    posizioneY[0] = rand.nextInt(10);
+                    posizioneY[0][indice] = rand.nextInt(10);
                 
-                    if(posizioneY[0] < 5)
+                    if(posizioneY[0][indice] < 5)
                     {
                         for(int j=1; j<grandezza; j++)
                         {
-                            posizioneY[j] = posizioneY[j-1] + 1;
+                            posizioneY[j][indice] = posizioneY[j-1][indice] + 1;
                         }
                     }
                     else
                     {
                         for(int j=1; j<grandezza; j++)
                         {
-                            posizioneY[j] = posizioneY[j-1] - 1;
+                            posizioneY[j][indice] = posizioneY[j-1][indice] - 1;
                         }
                     }
 
-                    posizioneX[0] = rand.nextInt(10);
+                    posizioneX[0][indice] = rand.nextInt(10);
                 }
 
-            }while(controllaPosizione(posizioneX, posizioneY, orizontale, grandezza) == false);
+            }while(controllaPosizione(posizioneX, posizioneY, indice, orizontale, grandezza) == false);
 
             if(orizontale == true)
             {
                 for(int j=0; j<grandezza; j++)
                 {
-                    griglia[posizioneX[j]][posizioneY[0]] = true; //inserisce nella griglia le navi
+                    griglia[posizioneX[j][indice]][posizioneY[0][indice]] = true; //inserisce nella griglia le navi
                 }
             }
             else
             {
                 for(int j=0; j<grandezza; j++)
                 {
-                    griglia[posizioneX[0]][posizioneY[j]] = true; //inserisce nella griglia le navi
+                    griglia[posizioneX[0][indice]][posizioneY[j][indice]] = true; //inserisce nella griglia le navi
                 }
             }
-            navi[i] = new Nave(posizioneX, posizioneY, grandezza, orizontale);
+            navi[i] = new Nave(posizioneX, posizioneY, indice,grandezza, orizontale);
 
         }
 
 
         //Frame
         add(panelCaselle, BorderLayout.CENTER);
-        add(panelNavi, BorderLayout.SOUTH);
+        add(testo, BorderLayout.NORTH);
         setTitle("Battaglia navale");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 600);
@@ -170,7 +172,7 @@ public class Griglia extends JFrame implements ActionListener
         setLocationRelativeTo(null);
     }
 
-    public boolean controllaPosizione(int[] posizioneX, int[] posizioneY, boolean orizontale, int grandezza) //ritorna true se la posizione della nave è libera
+    public boolean controllaPosizione(int[][] posizioneX, int[][] posizioneY, int indice, boolean orizontale, int grandezza) //ritorna true se la posizione della nave è libera
     {
         boolean controllaPosizione = true; 
 
@@ -178,7 +180,7 @@ public class Griglia extends JFrame implements ActionListener
         {
             if(orizontale == true) //la nave è orizzontale
             {
-                if(griglia[posizioneX[i]][posizioneY[0]] == true) //se è true vuol dire che c'è gia un'altra nave
+                if(griglia[posizioneX[i][indice]][posizioneY[0][indice]] == true) //se è true vuol dire che c'è gia un'altra nave
                 {
                     controllaPosizione = false; //lo mette a false per dire che lo spazio è gia occupato
                 }
@@ -186,7 +188,7 @@ public class Griglia extends JFrame implements ActionListener
 
             else //la nave è verticale
             {
-                if(griglia[posizioneX[0]][posizioneY[i]] == true) //se è true vuol dire che c'è gia un'altra nave
+                if(griglia[posizioneX[0][indice]][posizioneY[i][indice]] == true) //se è true vuol dire che c'è gia un'altra nave
                 {
                     controllaPosizione = false; //lo mette a false per dire che lo spazio è gia occupato
                 }
