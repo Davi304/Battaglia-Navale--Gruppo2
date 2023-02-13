@@ -90,8 +90,6 @@ public class Griglia extends JFrame implements ActionListener
                     posizioneY[h][indice] = 0;
                 }
                 
-
-
                 grandezza = i+1; //sceglie la grandezza
 
                 orizontale = rand.nextBoolean(); //decide se è orizzontale o verticale
@@ -212,9 +210,13 @@ public class Griglia extends JFrame implements ActionListener
 
                 ((Bottoni) e.getSource()).pulsantePremuto(); //segn il pulsante come premuto
             
-                if(griglia[x][y] == true)
+
+                for(int i=0; i<5; i++)
                 {
-                    colpito = true; //se colpisce almeno una nave lo segna su colpito
+                    if(navi[i].colpito(x, y) == true)
+                    {
+                        colpito = true;
+                    }
                 }
             
                 
