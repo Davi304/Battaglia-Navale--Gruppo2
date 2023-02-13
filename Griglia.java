@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Random;
-
+import java.lang.Thread;
 
 
 public class Griglia extends JFrame implements ActionListener
@@ -12,14 +12,15 @@ public class Griglia extends JFrame implements ActionListener
     public final int numTurni=30;
 
     JPanel panelCaselle = new JPanel(new GridLayout(11,11));
-    JPanel testo = new JPanel(new GridLayout(1,1));
-    JLabel counter = new JLabel(), info = new JLabel();
+    JPanel testo = new JPanel(new GridLayout(2,1));
+    JLabel counter = new JLabel(), info = new JLabel(), info2 = new JLabel();
     Bottoni[][] bottone = new Bottoni[11][11];
     Nave navi[] = new Nave[5];
     Random rand = new Random();
     int grandezza, posizioneX[][] = new int[5][5], posizioneY[][] = new int[5][5];
     int x,y, indice;
     int contatore=0;
+    int contatore2 =0;
     boolean orizontale;
     boolean[][] griglia = new boolean[10][10];
     Font f = new Font("Comic Sans", Font.BOLD,20);
@@ -169,19 +170,18 @@ public class Griglia extends JFrame implements ActionListener
             navi[i] = new Nave(posizioneX, posizioneY, indice,grandezza, orizontale);
 
         }
-
-        
+     
         //Frame
         add(panelCaselle, BorderLayout.CENTER);
         add(testo, BorderLayout.NORTH);
         testo.add(counter,BorderLayout.WEST);
         testo.add(info,BorderLayout.EAST);
+        testo.add(info2,BorderLayout.EAST);
         setTitle("Battaglia navale");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(650, 600);
         setVisible(true);
         setLocationRelativeTo(null);
-
 
         controllaVittoria();
     }
@@ -243,6 +243,13 @@ public class Griglia extends JFrame implements ActionListener
             {
                 contatore++;
                 info.setText("COUNTER COLPI: " + contatore);
+                info.setFont(f);
+                if(contatore == 31){
+                    info.setText("...HAI PERSO...");
+                    //Thread.sleep( 3000);
+                    setVisible(true);
+                    //Thread.sleep();
+                }
                 //prendo i valori della x e della y del bottone schiacciato
                 x = ((Bottoni) e.getSource()).getCoordinataX();
                 y = ((Bottoni) e.getSource()).getCoordinataY();
@@ -261,10 +268,13 @@ public class Griglia extends JFrame implements ActionListener
                 
                 if(colpito == true)
                 {
+                    contatore2++;
                     ((Bottoni) e.getSource()).setBackground(Color.RED);                    
                     ((Bottoni) e.getSource()).setText("O");
                     counter.setFont(f);
+                    info2.setFont(f);
                     counter.setText("COLPITO !!!");
+                    info2.setText("COUNTER COLPITO : " + contatore2 + " /15 ");
                 }
                 else
                 {
