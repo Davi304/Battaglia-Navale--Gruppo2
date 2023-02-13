@@ -3,19 +3,23 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.Random;
 
+
+
 public class Griglia extends JFrame implements ActionListener
 {
     //La classe griglia crea la griglia di gioco con le matrici che stava facendo Andrea
     
+    public final int numTurni=30;
+
     JPanel panelCaselle = new JPanel(new GridLayout(11,11));
     JPanel testo = new JPanel();
     JLabel counter = new JLabel(), info = new JLabel();
     Bottoni[][] bottone = new Bottoni[11][11];
-    JButton fuoco = new JButton();
     Nave navi[] = new Nave[5];
     Random rand = new Random();
     int grandezza, posizioneX[][] = new int[5][5], posizioneY[][] = new int[5][5];
     int x,y, indice;
+    int contatore=0;
     boolean orizontale;
     boolean[][] griglia = new boolean[10][10];
     Font f = new Font("Helvetica", Font.BOLD,20);
@@ -67,7 +71,6 @@ public class Griglia extends JFrame implements ActionListener
             }
         }
         
-
         //Navi
         for(int i=0; i<10; i++)
         {
@@ -160,6 +163,8 @@ public class Griglia extends JFrame implements ActionListener
         }
 
 
+        
+
         //Frame
         add(panelCaselle, BorderLayout.CENTER);
         add(testo, BorderLayout.NORTH);
@@ -196,6 +201,7 @@ public class Griglia extends JFrame implements ActionListener
         return controllaPosizione;
     }
 
+
     public void actionPerformed(ActionEvent e) 
     {
         boolean colpito = false;
@@ -204,6 +210,7 @@ public class Griglia extends JFrame implements ActionListener
         {
             if( ((Bottoni) e.getSource()).getPremuto() == false) //controlla se il bottone è stato premuto
             {
+                contatore++;
                 //prendo i valori della x e della y del bottone schiacciato
                 x = ((Bottoni) e.getSource()).getCoordinataX();
                 y = ((Bottoni) e.getSource()).getCoordinataY();
