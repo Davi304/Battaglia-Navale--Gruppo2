@@ -51,13 +51,17 @@ public class Griglia extends JFrame implements ActionListener
         bottone[0][10] = new Bottoni("L");
         for(int i=0; i<11; i++){
             bottone[0][i].setFont(f);
+            bottone[0][i].setBackground(new Color(255,128,0));
+
         }
         for(int i=1; i<11; i++)
         {
             bottone[i][0] = new Bottoni("" + i);
-            bottone[i][0].setBackground(Color.GRAY);
+            bottone[i][0].setBackground(new Color(255,128,0));
             bottone[i][0].setFont(f);
         }
+
+        bottone[0][0].setBackground(Color.WHITE);
 
         for(int i=0; i<11; i++)
         {
