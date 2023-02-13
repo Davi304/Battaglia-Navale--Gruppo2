@@ -27,6 +27,7 @@ public class Nave
     public boolean colpito(int x, int y)
     {// controlla se la nave è stata colpita
        
+        boolean colpito = false;
         if (orizzontale=true)
         {// se orizzontale la y sarà una e la x sarà >1
 
@@ -38,16 +39,15 @@ public class Nave
 
                     if (posizioneX[i][indice]==x)
                     {
-                        return true;
+                        colpito = true;
                     }
                     
                 }
             }
             else
             {
-                return false;
+                colpito = false;
             }
-            return false;
         }
 
         else 
@@ -60,16 +60,18 @@ public class Nave
                 {
                     if (posizioneY[j][indice]==y)
                     {
-                        return true;
+                        colpito = true;
                     }
                 }
             }
             else
             {
-                return false;
+                colpito = false;
             }
-            return false;
+
         }
+
+        return colpito;
     }
 
 }
