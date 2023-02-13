@@ -162,9 +162,7 @@ public class Griglia extends JFrame implements ActionListener
 
         }
 
-
         
-
         //Frame
         add(panelCaselle, BorderLayout.CENTER);
         add(testo, BorderLayout.NORTH);
@@ -173,6 +171,9 @@ public class Griglia extends JFrame implements ActionListener
         setSize(600, 600);
         setVisible(true);
         setLocationRelativeTo(null);
+
+
+        controllaVittoria();
     }
 
     public boolean controllaPosizione(int[][] posizioneX, int[][] posizioneY, int indice, boolean orizontale, int grandezza) //ritorna true se la posizione della nave è libera
@@ -201,6 +202,23 @@ public class Griglia extends JFrame implements ActionListener
         return controllaPosizione;
     }
 
+    public void controllaVittoria()
+    {
+        boolean vittoria = false;
+
+        while(vittoria == false)
+        {
+            if(contatore == numTurni)
+            {
+                vittoria = true;
+            }
+
+            /*if(tutteAffondate() == true)
+            {
+                vittoria = true;
+            }*/
+        }
+    }
 
     public void actionPerformed(ActionEvent e) 
     {
