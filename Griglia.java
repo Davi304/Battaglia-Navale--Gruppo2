@@ -177,11 +177,12 @@ public class Griglia extends JFrame implements ActionListener
 
     public void actionPerformed(ActionEvent e) 
     {
-       for(int i=1; i<11; i++)
-       {
-            for(int j=1; j<11; j++)
+        int x,y;
+        boolean colpito = false;
+        if(e.getSource() instanceof Bottoni) //capisce se è stato premuto un bottone
+        {
+            if( ((Bottoni) e.getSource()).getPremuto() == false) //controlla se il bottone è stato premuto
             {
-<<<<<<< Updated upstream
                 //prendo i valori della x e della y del bottone schiacciato
                 x = ((Bottoni) e.getSource()).getCoordinataX();
                 y = ((Bottoni) e.getSource()).getCoordinataY();
@@ -208,13 +209,11 @@ public class Griglia extends JFrame implements ActionListener
             {
                 //Il pulsante è gia stato premuto
             }
-        }
+        
         
       
-=======
                 bottoni[i][j].setBackground(Color.PINK);
-            }
+            
        }
->>>>>>> Stashed changes
     }
 }
