@@ -224,6 +224,9 @@ public class Griglia extends JFrame implements ActionListener
                 vittoria = true;
             }*/
         }
+
+        //aprire una nuova finestra che dice hai vinto
+        //chiudere la finestra dopo tot secondi
     }
 
     public void actionPerformed(ActionEvent e) 
