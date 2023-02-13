@@ -6,59 +6,49 @@ import java.util.Random;
 public class Griglia extends JFrame implements ActionListener
 {
     //La classe griglia crea la griglia di gioco con le matrici che stava facendo Andrea
-    
+    //
     JPanel panelCaselle = new JPanel(new GridLayout(11,11));
     JPanel panelNavi = new JPanel();
-    Bottoni[][] bottone = new Bottoni[11][11];
+    JButton[][] bottoni = new JButton[11][11];
     JButton fuoco = new JButton();
     Nave navi[] = new Nave[5];
     Random rand = new Random();
     int grandezza, posizioneX[] = new int[5], posizioneY[] = new int[5];
-    int x,y;
     boolean orizontale;
     boolean[][] griglia = new boolean[10][10];
 
     public Griglia()
     {
         //Bottoni
-        for(int i=1; i<11; i++)
-        {
-            for(int j=1; j<11; j++)
-            {
-                bottone[i][j] = new Bottoni((i-1), (j-1), new ImageIcon("Immagini/casella.jpg"));
-            }
-        }
-
-        bottone[0][0] = new Bottoni("");
-        bottone[0][1] = new Bottoni("A");
-        bottone[0][2] = new Bottoni("B");
-        bottone[0][3] = new Bottoni("C");
-        bottone[0][4] = new Bottoni("D");
-        bottone[0][5] = new Bottoni("E");
-        bottone[0][6] = new Bottoni("F");
-        bottone[0][7] = new Bottoni("G");
-        bottone[0][8] = new Bottoni("H");
-        bottone[0][9] = new Bottoni("I");
-        bottone[0][10] = new Bottoni("L");
-
-        for(int i=1; i<11; i++)
-        {
-            bottone[i][0] = new Bottoni("" + i);
-        }
-
         for(int i=0; i<11; i++)
         {
             for(int j=0; j<11; j++)
             {
-                panelCaselle.add(bottone[i][j]);
+                bottoni[i][j] = new JButton();//(new ImageIcon("Immagini/casella.jpg"));
+                panelCaselle.add(bottoni[i][j]);
             }
         }
-
-        for(int i=1; i<11;i++)
+        for(int i=0; i<11; i++)
         {
-            for(int j=1; j<11;j++)
-            {
-                bottone[i][j].addActionListener(this);
+            bottoni[0][i].setBackground(Color.BLACK);
+            bottoni[i][0].setBackground(Color.BLACK);
+            bottoni[0][0].setText("");
+            bottoni[i][0].setText(""+(i));
+            bottoni[0][1].setText("A");
+            bottoni[0][2].setText("B");
+            bottoni[0][3].setText("C");
+            bottoni[0][4].setText("D");
+            bottoni[0][5].setText("E");
+            bottoni[0][6].setText("F");
+            bottoni[0][7].setText("G");
+            bottoni[0][8].setText("H");
+            bottoni[0][9].setText("I");
+            bottoni[0][10].setText("L");
+        }
+
+        for(int i=1; i<11;i++){
+            for(int j=1; j<11;j++){
+                bottoni[i][j].addActionListener(this);
             }
         }
         
@@ -78,14 +68,6 @@ public class Griglia extends JFrame implements ActionListener
         {
             do
             {
-                for(int h=0; h<5; h++)
-                {
-                    posizioneX[h] = 0;
-                    posizioneY[h] = 0;
-                }
-                
-
-
                 grandezza = i+1; //sceglie la grandezza
 
                 orizontale = rand.nextBoolean(); //decide se è orizzontale o verticale
@@ -162,6 +144,7 @@ public class Griglia extends JFrame implements ActionListener
         setTitle("Battaglia navale");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 600);
+        setFont(getFont());
         setVisible(true);
         setLocationRelativeTo(null);
     }
@@ -194,12 +177,11 @@ public class Griglia extends JFrame implements ActionListener
 
     public void actionPerformed(ActionEvent e) 
     {
-        boolean colpito = false;
-
-        if(e.getSource() instanceof Bottoni) //capisce se è stato premuto un bottone
-        {
-            if( ((Bottoni) e.getSource()).getPremuto() == false) //controlla se il bottone è stato premuto
+       for(int i=1; i<11; i++)
+       {
+            for(int j=1; j<11; j++)
             {
+<<<<<<< Updated upstream
                 //prendo i valori della x e della y del bottone schiacciato
                 x = ((Bottoni) e.getSource()).getCoordinataX();
                 y = ((Bottoni) e.getSource()).getCoordinataY();
@@ -229,5 +211,10 @@ public class Griglia extends JFrame implements ActionListener
         }
         
       
+=======
+                bottoni[i][j].setBackground(Color.PINK);
+            }
+       }
+>>>>>>> Stashed changes
     }
 }
