@@ -239,6 +239,7 @@ public class Griglia extends JFrame implements ActionListener
             if( ((Bottoni) e.getSource()).getPremuto() == false) //controlla se il bottone è stato premuto
             {
                 contatore++;
+                info.setText("COUNTER COLPI: " + contatore);
                 //prendo i valori della x e della y del bottone schiacciato
                 x = ((Bottoni) e.getSource()).getCoordinataX();
                 y = ((Bottoni) e.getSource()).getCoordinataY();
