@@ -17,6 +17,8 @@ public class Griglia extends JFrame implements ActionListener
     int x,y;
     boolean orizontale;
     boolean[][] griglia = new boolean[10][10];
+    Font f = new Font("Helvetica", Font.BOLD,20);
+
 
     public Griglia()
     {
@@ -25,7 +27,9 @@ public class Griglia extends JFrame implements ActionListener
         {
             for(int j=1; j<11; j++)
             {
-                bottone[i][j] = new Bottoni((i-1), (j-1), new ImageIcon("Immagini/casella.jpg"));
+                bottone[i][j] = new Bottoni((i-1), (j-1));
+                bottone[i][j].setBackground(Color.BLUE);
+                bottone[i][j].setFont(f);
             }
         }
 
@@ -214,11 +218,12 @@ public class Griglia extends JFrame implements ActionListener
                 
                 if(colpito == true)
                 {
-                    ((Bottoni) e.getSource()).setIcon(new ImageIcon("Immagini/o.jpg"));
+                    ((Bottoni) e.getSource()).setBackground(Color.RED);                    
+                    ((Bottoni) e.getSource()).setText("X");
                 }
                 else
                 {
-                    ((Bottoni) e.getSource()).setIcon(new ImageIcon("Immagini/x.jpg"));
+                    ((Bottoni) e.getSource()).setBackground(Color.CYAN);
                 }
             }
 
