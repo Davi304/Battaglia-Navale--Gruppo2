@@ -11,9 +11,11 @@ public class Griglia extends JFrame implements ActionListener
     
     public final int numTurni=30;
 
+    JFrame risultato = new JFrame();
+    JPanel testoRisultato = new JPanel(new GridLayout(1,1));
     JPanel panelCaselle = new JPanel(new GridLayout(11,11));
     JPanel testo = new JPanel(new GridLayout(2,1));
-    JLabel counter = new JLabel(), info = new JLabel(), info2 = new JLabel();
+    JLabel counter = new JLabel(), info = new JLabel(), info2 = new JLabel(),info3 = new JLabel();
     Bottoni[][] bottone = new Bottoni[11][11];
     Nave navi[] = new Nave[5];
     Random rand = new Random();
@@ -23,7 +25,7 @@ public class Griglia extends JFrame implements ActionListener
     int contatore2 =0;
     boolean orizontale;
     boolean[][] griglia = new boolean[10][10];
-    Font f = new Font("Comic Sans", Font.BOLD,20);
+    Font f = new Font("Comic Sans", Font.CENTER_BASELINE,20);
 
 
     public Griglia()
@@ -183,6 +185,12 @@ public class Griglia extends JFrame implements ActionListener
         setVisible(true);
         setLocationRelativeTo(null);
 
+        //Frame Risultato
+        risultato.add(testoRisultato,BorderLayout.CENTER);
+        risultato.setSize(100,90);
+        testoRisultato.add(info3,BorderLayout.CENTER);
+        risultato.setVisible((false));
+        risultato.setLocationRelativeTo(null);
         controllaVittoria();
     }
 
@@ -218,9 +226,20 @@ public class Griglia extends JFrame implements ActionListener
 
         while(vittoria == false)
         {
-            if(contatore == numTurni)
+            if(contatore2 == 15)
             {
                 vittoria = true;
+                info3.setFont(f);
+                info3.setText("HAI VINTO !!!");
+                risultato.setVisible(true);
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                risultato.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
             }
 
             /*if(tutteAffondate() == true)
@@ -244,11 +263,18 @@ public class Griglia extends JFrame implements ActionListener
                 contatore++;
                 info.setText("COUNTER COLPI: " + contatore);
                 info.setFont(f);
-                if(contatore == 31){
-                    info.setText("...HAI PERSO...");
-                    //Thread.sleep( 3000);
-                    setVisible(true);
-                    //Thread.sleep();
+                if(contatore == 5){
+                    risultato.setVisible(true);
+                    info3.setText("...HAI PERSO...");
+                    info3.setFont(f);
+                    try {
+                        Thread.sleep( 100000);
+                    } catch (InterruptedException e1) {
+                        // TODO Auto-generated catch block
+                        e1.printStackTrace();
+                    }
+                    setVisible(false);
+                    risultato.setVisible(false);
                 }
                 //prendo i valori della x e della y del bottone schiacciato
                 x = ((Bottoni) e.getSource()).getCoordinataX();
