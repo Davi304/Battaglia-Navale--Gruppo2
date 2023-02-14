@@ -9,6 +9,8 @@ public class Nave
 
     int indice;
 
+    int puntiColpiti = 0;
+
     boolean orizzontale=true; // se true è orizzontale se false è verticale
 
 
@@ -55,7 +57,25 @@ public class Nave
             }
         }
 
+        if(colpito == true) //segna quante volte è stata colpita la nave
+        {
+            puntiColpiti++;
+        }
+
         return colpito;
     }
 
+
+    public boolean affondata()
+    {
+        if(puntiColpiti == grandezza)
+        {
+            return true;
+        }
+
+        else
+        {
+            return false;
+        }
+    }
 }
