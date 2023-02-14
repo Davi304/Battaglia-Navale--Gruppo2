@@ -26,50 +26,9 @@ public class Nave
 
     public boolean colpito(int x, int y)
     {// controlla se la nave è stata colpita
-       
         boolean colpito = false;
-        if (orizzontale=true)
-        {// se orizzontale la y sarà una e la x sarà >1
 
-            if (posizioneY[0][indice]==y)
-            {
-
-                for (int i =0; i < grandezza; i ++)
-                {
-
-                    if (posizioneX[i][indice]==x)
-                    {
-                        colpito = true;
-                    }
-                    
-                }
-            }
-            else
-            {
-                colpito = false;
-            }
-        }
-
-        else 
-        {// il contrario di sopra 
-
-            if (posizioneX[0][indice]==x)
-            {
-
-                for (int j =0; j < grandezza; j ++)
-                {
-                    if (posizioneY[j][indice]==y)
-                    {
-                        colpito = true;
-                    }
-                }
-            }
-            else
-            {
-                colpito = false;
-            }
-
-        }
+        //da completare
 
         return colpito;
     }
