@@ -60,8 +60,8 @@ public class Griglia extends JFrame implements ActionListener
         setVisible(true);
         setLocationRelativeTo(null);
 
-        //funzione per controllare se si ha vinto
-        controllaVittoria();
+        
+        
     }
 
     public void creaBottoni() 
@@ -237,36 +237,18 @@ public class Griglia extends JFrame implements ActionListener
     {
         boolean giocoFinito = false;
 
-        while(giocoFinito == false) //quando diventa true chiude la finestra di gioco
+        if(contatore2 == 15)
         {
-            if(contatore2 == 15)
-            {
-                giocoFinito = true;
+            giocoFinito = true;
                 
-                Vittoria_sconfitta vittoria_sconfitta = new Vittoria_sconfitta(true);
-                try 
-                {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) 
-                {
-                    e.printStackTrace();
-                }
-            }
+            Vittoria_sconfitta vittoria_sconfitta = new Vittoria_sconfitta(true);
+        }
 
-            if(contatore == numTurni)
-            {
-                giocoFinito = true;
+        if(contatore == numTurni)
+        {
+            giocoFinito = true;
 
-                Vittoria_sconfitta vittoria_sconfitta= new Vittoria_sconfitta(false);
-                try 
-                {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) 
-                {
-                    
-                    e.printStackTrace();
-                }
-            }
+            Vittoria_sconfitta vittoria_sconfitta= new Vittoria_sconfitta(false);
         }
 
         //chiudere la finestra dopo tot secondi
@@ -330,6 +312,9 @@ public class Griglia extends JFrame implements ActionListener
                     //testo
                     counter.setText("ACQUA...");
                 }
+
+                //funzione per controllare se si ha vinto
+                controllaVittoria();
             }
 
             else
