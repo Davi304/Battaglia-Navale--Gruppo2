@@ -1,18 +1,43 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class Regolamento extends JFrame implements ActionListener
 {
     JPanel panelTurni = new JPanel(new GridLayout(1,2));
     JPanel panelRegolamento = new JPanel();
     JLabel regolamento = new JLabel();
-    JTextField turni = new JTextField(15);
+    //JTextField turni = new JTextField(15);
+    SpinnerModel valori = new SpinnerNumberModel(45,1,99,1);
+    JSpinner turni = new JSpinner(valori);
+        
     JButton gioca = new JButton("Gioca");
+
+    String testo = "";
 
     public Regolamento()
     {
-        regolamento.setText("Prova regolamento");
+        try 
+        {
+            File file = new File("regolamento.txt");
+            Scanner scannerRegolamento = new Scanner(file);
+
+            while(scannerRegolamento.hasNext())
+            {
+                testo += scannerRegolamento.nextLine();
+            }
+
+            scannerRegolamento.close();
+        } 
+        catch (FileNotFoundException e) 
+        {
+            e.printStackTrace();
+        }
+
+        regolamento.setText(testo);
 
         gioca.addActionListener(this);
 
@@ -32,9 +57,7 @@ public class Regolamento extends JFrame implements ActionListener
 
     public void actionPerformed(ActionEvent e) 
     {
-        String Turni = turni.getText();
-
-        int numTurni = Integer.parseInt(Turni);
+        int numTurni = (int) turni.getValue();
 
         //da completare
     }
