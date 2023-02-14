@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class Vittoria_sconfitta extends JFrame
+public class Vittoria_sconfitta extends Griglia
 {
     JPanel testoRisultato = new JPanel();
     JLabel info3 = new JLabel();
@@ -9,12 +9,19 @@ public class Vittoria_sconfitta extends JFrame
 
     public Vittoria_sconfitta(boolean vittoria_sconfitta)
     {
-        //if
-        info3.setFont(f);
-        info3.setText("HAI VINTO !!!");
-        //if
-        info3.setText("...HAI PERSO...");
-        info3.setFont(f);
+        
+        if(vittoria_sconfitta==true){
+            info3.setFont(f);
+            info3.setText("HAI VINTO !!!");
+            setVisible(true);
+        }
+        
+        else if(vittoria_sconfitta==false){
+            info3.setFont(f);
+            info3.setText("...HAI PERSO...");
+            setVisible(false);
+        }
+        
 
         add(testoRisultato,BorderLayout.CENTER);
         setSize(100,90);

@@ -227,10 +227,18 @@ public class Griglia extends JFrame implements ActionListener
                 }
             }
 
-            /*if(tutteAffondate() == true)
+            if(contatore==10)
             {
-                vittoria = true;
-            }*/
+                vittoria = false;
+
+                Vittoria_sconfitta vittoria_sconfitta= new Vittoria_sconfitta(vittoria);
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
         }
 
         //aprire una nuova finestra che dice hai vinto
