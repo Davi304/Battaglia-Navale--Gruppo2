@@ -222,7 +222,7 @@ public class Griglia extends JFrame implements ActionListener
                 try {
                     Thread.sleep(5000);
                 } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
+                   
                     e.printStackTrace();
                 }
             }
@@ -235,7 +235,7 @@ public class Griglia extends JFrame implements ActionListener
                 try {
                     Thread.sleep(5000);
                 } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
+                    
                     e.printStackTrace();
                 }
             }
@@ -264,17 +264,12 @@ public class Griglia extends JFrame implements ActionListener
                 ((Bottoni) e.getSource()).pulsantePremuto(); //segn il pulsante come premuto
             
 
-                /*for(int i=0; i<5; i++)
+                for(int i=0; i<5; i++)
                 {
                     if(navi[i].colpito(x, y) == true)
                     {
                         colpito = true;
                     }
-                }*/
-
-                if(griglia[x][y] == true)
-                {
-                    colpito = true;
                 }
                          
                 if(colpito == true)

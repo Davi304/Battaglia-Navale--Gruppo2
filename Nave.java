@@ -28,7 +28,32 @@ public class Nave
     {// controlla se la nave è stata colpita
         boolean colpito = false;
 
-        //da completare
+        if(orizzontale==true) //orizzontale
+        {
+            if(posizioneY[0][indice] == y)
+            {
+                for(int i=0; i<grandezza; i++)
+                {
+                    if(posizioneX[i][indice] == x)
+                    {
+                        colpito = true;
+                    }
+                }
+            }
+        }
+        else    //verticale
+        {
+            if(posizioneX[0][indice] == x)
+            {
+                for(int i=0; i<grandezza; i++)
+                {
+                    if(posizioneY[i][indice] == y)
+                    {
+                        colpito = true;
+                    }
+                }
+            }
+        }
 
         return colpito;
     }
