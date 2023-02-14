@@ -256,7 +256,7 @@ public class Griglia extends JFrame implements ActionListener
                 contatore++;
                 info.setText("COUNTER COLPI: " + contatore);
                 info.setFont(f);
-                if(contatore == 5){
+                /*if(contatore == 5){
                     
                    
                     try {
@@ -267,7 +267,7 @@ public class Griglia extends JFrame implements ActionListener
                     }
                     setVisible(false);
                     risultato.setVisible(false);
-                }
+                }*/
                 //prendo i valori della x e della y del bottone schiacciato
                 x = ((Bottoni) e.getSource()).getCoordinataX();
                 y = ((Bottoni) e.getSource()).getCoordinataY();
