@@ -227,7 +227,7 @@ public class Griglia extends JFrame implements ActionListener
                 }
             }
 
-            if(contatore==10)
+            if(contatore==numTurni)
             {
                 vittoria = false;
 
