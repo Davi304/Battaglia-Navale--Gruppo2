@@ -15,7 +15,7 @@ public class Griglia extends JFrame implements ActionListener
     JPanel testoRisultato = new JPanel(new GridLayout(1,1));
     JPanel panelCaselle = new JPanel(new GridLayout(11,11));
     JPanel testo = new JPanel(new GridLayout(2,1));
-    JLabel counter = new JLabel(), info = new JLabel(), info2 = new JLabel(),info3 = new JLabel();
+    JLabel counter = new JLabel(), info = new JLabel(), info2 = new JLabel();
     Bottoni[][] bottone = new Bottoni[11][11];
     Nave navi[] = new Nave[5];
     Random rand = new Random();
@@ -185,12 +185,7 @@ public class Griglia extends JFrame implements ActionListener
         setVisible(true);
         setLocationRelativeTo(null);
 
-        //Frame Risultato
-        risultato.add(testoRisultato,BorderLayout.CENTER);
-        risultato.setSize(100,90);
-        testoRisultato.add(info3,BorderLayout.CENTER);
-        risultato.setVisible((false));
-        risultato.setLocationRelativeTo(null);
+       
         controllaVittoria();
     }
 
@@ -229,16 +224,14 @@ public class Griglia extends JFrame implements ActionListener
             if(contatore2 == 15)
             {
                 vittoria = true;
-                info3.setFont(f);
-                info3.setText("HAI VINTO !!!");
-                risultato.setVisible(true);
+                
+                Vittoria_sconfitta vittoria_sconfitta = new Vittoria_sconfitta(vittoria);
                 try {
                     Thread.sleep(5000);
                 } catch (InterruptedException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-                risultato.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
             }
 
@@ -264,9 +257,8 @@ public class Griglia extends JFrame implements ActionListener
                 info.setText("COUNTER COLPI: " + contatore);
                 info.setFont(f);
                 if(contatore == 5){
-                    risultato.setVisible(true);
-                    info3.setText("...HAI PERSO...");
-                    info3.setFont(f);
+                    
+                   
                     try {
                         Thread.sleep( 100000);
                     } catch (InterruptedException e1) {
