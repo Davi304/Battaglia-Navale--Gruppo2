@@ -98,12 +98,6 @@ public class Griglia extends JFrame implements ActionListener
             {
                 indice = i;
 
-                for(int h=0; h<5; h++)
-                {
-                    posizioneX[h][indice] = 0;
-                    posizioneY[h][indice] = 0;
-                }
-                
                 grandezza = i+1; //sceglie la grandezza
 
                 orizontale = rand.nextBoolean(); //decide se è orizzontale o verticale
@@ -185,7 +179,6 @@ public class Griglia extends JFrame implements ActionListener
         setVisible(true);
         setLocationRelativeTo(null);
 
-       
         controllaVittoria();
     }
 
@@ -232,7 +225,6 @@ public class Griglia extends JFrame implements ActionListener
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-
             }
 
             /*if(tutteAffondate() == true)
@@ -256,18 +248,7 @@ public class Griglia extends JFrame implements ActionListener
                 contatore++;
                 info.setText("COUNTER COLPI: " + contatore);
                 info.setFont(f);
-                /*if(contatore == 5){
-                    
-                   
-                    try {
-                        Thread.sleep( 100000);
-                    } catch (InterruptedException e1) {
-                        // TODO Auto-generated catch block
-                        e1.printStackTrace();
-                    }
-                    setVisible(false);
-                    risultato.setVisible(false);
-                }*/
+
                 //prendo i valori della x e della y del bottone schiacciato
                 x = ((Bottoni) e.getSource()).getCoordinataX();
                 y = ((Bottoni) e.getSource()).getCoordinataY();
@@ -282,8 +263,7 @@ public class Griglia extends JFrame implements ActionListener
                         colpito = true;
                     }
                 }
-            
-                
+                         
                 if(colpito == true)
                 {
                     contatore2++;
