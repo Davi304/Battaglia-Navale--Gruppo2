@@ -2,14 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Random;
-import java.lang.Thread;
-
 
 public class Griglia extends JFrame implements ActionListener
 {
-    //La classe griglia crea la griglia di gioco con le matrici che stava facendo Andrea
-    
-    public final int numTurni=30;
+    public final int numTurni=100;
 
     JFrame risultato = new JFrame();
     JPanel testoRisultato = new JPanel(new GridLayout(1,1));
@@ -240,6 +236,15 @@ public class Griglia extends JFrame implements ActionListener
         if(contatore2 == 15)
         {
             giocoFinito = true;
+
+            try 
+            {
+                Thread.sleep(5000);
+            } 
+            catch (InterruptedException e) 
+            {
+                e.printStackTrace();
+            }
                 
             Vittoria_sconfitta vittoria_sconfitta = new Vittoria_sconfitta(true);
         }
@@ -247,6 +252,15 @@ public class Griglia extends JFrame implements ActionListener
         if(contatore == numTurni)
         {
             giocoFinito = true;
+
+            try 
+            {
+                Thread.sleep(5000);
+            } 
+            catch (InterruptedException e) 
+            {
+                e.printStackTrace();
+            }
 
             Vittoria_sconfitta vittoria_sconfitta= new Vittoria_sconfitta(false);
         }
