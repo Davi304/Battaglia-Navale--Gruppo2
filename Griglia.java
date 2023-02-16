@@ -5,8 +5,9 @@ import java.util.Random;
 
 public class Griglia extends JFrame implements ActionListener
 {
-    public final int numTurni=45;
+    //public final int numTurni=45;
 
+    int numTurni;
     JFrame risultato = new JFrame();
     JPanel testoRisultato = new JPanel(new GridLayout(1,1));
     JPanel panelCaselle = new JPanel(new GridLayout(11,11));
@@ -26,8 +27,9 @@ public class Griglia extends JFrame implements ActionListener
     Font f = new Font("Comic Sans", Font.CENTER_BASELINE,20);
 
 
-    public Griglia()
+    public Griglia(int numTurni)
     {
+        this.numTurni = numTurni;
         //Bottoni
         creaBottoni();
         
@@ -231,12 +233,9 @@ public class Griglia extends JFrame implements ActionListener
 
     public void controllaVittoria()
     {
-        boolean giocoFinito = false;
 
         if(contatore2 == 15)
         {
-            giocoFinito = true;
-
             try 
             {
                 Thread.sleep(3000);
@@ -251,8 +250,6 @@ public class Griglia extends JFrame implements ActionListener
 
         if(contatore == numTurni)
         {
-            giocoFinito = true;
-
             try 
             {
                 Thread.sleep(5000);

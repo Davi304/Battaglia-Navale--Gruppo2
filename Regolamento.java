@@ -18,8 +18,12 @@ public class Regolamento extends JFrame implements ActionListener
         
     JButton gioca = new JButton("Gioca");
 
+<<<<<<< HEAD
     String[] testo = new String[4];
     
+=======
+    String testo = "regolamento";
+>>>>>>> a63302615ba164c06b8a8d51f6d5cbec5dc4cee1
 
     public Regolamento()
     {
@@ -76,7 +80,17 @@ public class Regolamento extends JFrame implements ActionListener
     {
         int numTurni = (int) turni.getValue();
 
-        //da completare
+        try 
+        {
+            Thread.sleep(2000);
+        } 
+        catch (InterruptedException e1) 
+        {
+            e1.printStackTrace();
+        }
+
+        Griglia griglia = new Griglia(numTurni);
+        dispose();
     }
     
 }
