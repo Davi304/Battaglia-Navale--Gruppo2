@@ -42,17 +42,19 @@ public class Regolamento extends JFrame implements ActionListener
 
         turni.setFont(f);
 
+        panelRegolamento.setBackground(new Color(255,255,255));
         panelRegolamento.add(regolamento[0]);
         panelRegolamento.add(regolamento[1]);
         panelRegolamento.add(regolamento[2]);
         panelRegolamento.add(regolamento[3]);
         panelTurni.add(turni);
         panelTurni.add(gioca);
+       
         add(panelRegolamento, BorderLayout.CENTER);
         add(panelTurni, BorderLayout.SOUTH);
         setTitle("Regolamento");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800, 300);
+        setSize(900, 300);
         setVisible(true);
         setLocationRelativeTo(null);
 

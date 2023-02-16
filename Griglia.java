@@ -37,6 +37,7 @@ public class Griglia extends JFrame implements ActionListener
         creaNavi(); //codice che crea le navi
      
         //panel
+        testo.setBackground(new Color(255,255,255));
         testo.add(counter,BorderLayout.WEST);
         testo.add(info,BorderLayout.EAST);
         testo.add(info2,BorderLayout.EAST);
@@ -306,7 +307,7 @@ public class Griglia extends JFrame implements ActionListener
                 {
                     contatore2++;
                     //bottone
-                    ((Bottoni) e.getSource()).setBackground(Color.RED);                    
+                    ((Bottoni) e.getSource()).setBackground(new Color(178,28,59));                    
                     ((Bottoni) e.getSource()).setText("O");
 
                     //testi

@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class Vittoria_sconfitta extends JFrame
 {
-    JPanel testoRisultato = new JPanel();
+    JPanel testoRisultato = new JPanel(new GridLayout(3,3));
     JLabel info = new JLabel();
     Font f = new Font("Comic Sans", Font.CENTER_BASELINE,20);
 
@@ -22,6 +22,7 @@ public class Vittoria_sconfitta extends JFrame
 
         add(testoRisultato,BorderLayout.CENTER);
         setSize(250,200);
+        testoRisultato.setBackground(new Color(255,255,255));
         testoRisultato.add(info,BorderLayout.CENTER);
         setVisible(true);
         setLocationRelativeTo(null);
