@@ -13,6 +13,8 @@ public class Regolamento extends JFrame implements ActionListener
     //JTextField turni = new JTextField(15);
     SpinnerModel valori = new SpinnerNumberModel(45,1,99,1);
     JSpinner turni = new JSpinner(valori);
+
+    Font f = new Font("Comic Sans", Font.CENTER_BASELINE,15);
         
     JButton gioca = new JButton("Gioca");
 
@@ -20,7 +22,7 @@ public class Regolamento extends JFrame implements ActionListener
 
     public Regolamento()
     {
-        try 
+        /*try 
         {
             File file = new File("regolamento.txt");
             Scanner scannerRegolamento = new Scanner(file);
@@ -35,11 +37,16 @@ public class Regolamento extends JFrame implements ActionListener
         catch (FileNotFoundException e) 
         {
             e.printStackTrace();
-        }
+        }*/
 
+        regolamento.setFont(f);
         regolamento.setText(testo);
 
+        gioca.setFont(f);
+        gioca.setBackground(new Color(255,128,0));
         gioca.addActionListener(this);
+
+        turni.setFont(f);
 
         panelRegolamento.add(regolamento);
         panelTurni.add(turni);
