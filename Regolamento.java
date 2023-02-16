@@ -37,12 +37,11 @@ public class Regolamento extends JFrame implements ActionListener
         
         panelTurni.setBackground(Color.PINK);
         gioca.setFont(f);
-        gioca.setBackground(new Color(255,128,0));
+        gioca.setBackground(new Color(38,97,155));
         gioca.addActionListener(this);
 
         turni.setFont(f);
-
-        panelRegolamento.setBackground(new Color(255,255,255));
+        panelRegolamento.setBackground(new Color(255,122,122));
         panelRegolamento.add(regolamento[0]);
         panelRegolamento.add(regolamento[1]);
         panelRegolamento.add(regolamento[2]);
@@ -56,7 +55,7 @@ public class Regolamento extends JFrame implements ActionListener
         add(panelTurni, BorderLayout.SOUTH);
         setTitle("Regolamento");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(900, 300);
+        setSize(900, 200);
         setVisible(true);
         setLocationRelativeTo(null);
 

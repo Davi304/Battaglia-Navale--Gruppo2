@@ -94,14 +94,14 @@ public class Griglia extends JFrame implements ActionListener
         for(int i=0; i<11; i++)
         {
             bottone[0][i].setFont(f);
-            bottone[0][i].setBackground(new Color(255,128,0));
+            bottone[0][i].setBackground(new Color(224,90,122));
         }
 
         //caselle segna posizione dei numeri
         for(int i=1; i<11; i++)
         {
             bottone[i][0] = new Bottoni("" + i);
-            bottone[i][0].setBackground(new Color(255,128,0));
+            bottone[i][0].setBackground(new Color(224,90,122));
             bottone[i][0].setFont(f);
         }
 
