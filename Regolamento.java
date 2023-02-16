@@ -16,6 +16,10 @@ public class Regolamento extends JFrame implements ActionListener
 
     String[] testo = new String[4];
     
+<<<<<<< Updated upstream
+=======
+    String testo = "regolamento";
+>>>>>>> Stashed changes
 
     public Regolamento()
     {
@@ -47,6 +51,9 @@ public class Regolamento extends JFrame implements ActionListener
         panelRegolamento.add(regolamento[1]);
         panelRegolamento.add(regolamento[2]);
         panelRegolamento.add(regolamento[3]);
+=======
+        panelRegolamento.add(regolamento);
+>>>>>>> Stashed changes
         panelTurni.add(turni);
         panelTurni.add(gioca);
        
