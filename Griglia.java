@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Griglia extends JFrame implements ActionListener
 {
-    public final int numTurni=100;
+    public final int numTurni=45;
 
     JFrame risultato = new JFrame();
     JPanel testoRisultato = new JPanel(new GridLayout(1,1));
@@ -239,7 +239,7 @@ public class Griglia extends JFrame implements ActionListener
 
             try 
             {
-                Thread.sleep(5000);
+                Thread.sleep(3000);
             } 
             catch (InterruptedException e) 
             {
