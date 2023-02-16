@@ -18,7 +18,8 @@ public class Regolamento extends JFrame implements ActionListener
         
     JButton gioca = new JButton("Gioca");
 
-    String testo = "";
+    String[] testo = new String[4];
+    
 
     public Regolamento()
     {
@@ -39,6 +40,11 @@ public class Regolamento extends JFrame implements ActionListener
             e.printStackTrace();
         }*/
 
+        testo[0] = " Regolamento";
+        testo[1] =" Hai un massimo di turni, dopo il quale se non hai affondato tutte le navi perdi. ( e' consigliato lasciare 45 turni)";
+        testo[2] =" Devi affondare 5 navi ( 15 caselle in totale ) la grandezza delle navi puo' essere : 1; 2; 3; 4 oppure 5" ;
+        testo[3] =" Se la nave viene colpita la casella diventera' rossa con una x in centro, se si colpisce a vuoto diventa azzurra";
+        
         regolamento.setFont(f);
         regolamento.setText(testo);
 
