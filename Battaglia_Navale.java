@@ -4,7 +4,7 @@ public class Battaglia_Navale
     {
         //Il main richiama soltanto la classe principale Gioco
         Regolamento regolamento = new Regolamento();
-        Griglia griglia = new Griglia();
+        //Griglia griglia = new Griglia();
         
     }
     
