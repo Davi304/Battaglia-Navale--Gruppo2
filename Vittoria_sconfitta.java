@@ -6,7 +6,7 @@ public class Vittoria_sconfitta extends JFrame
     
     JPanel testoRisultato = new JPanel(new GridLayout(3,3));
     JLabel info = new JLabel();
-    Font f = new Font("Impact", Font.CENTER_BASELINE,40);
+    Font f = new Font("Impact", Font.CENTER_BASELINE,60);
 
     public Vittoria_sconfitta(boolean vittoria_sconfitta)
     {
@@ -24,7 +24,7 @@ public class Vittoria_sconfitta extends JFrame
         
 
         add(testoRisultato,BorderLayout.CENTER);
-        setSize(250,200);
+        setSize(300,200);
         testoRisultato.setBackground(new Color(0,0,0));
         testoRisultato.add(info,BorderLayout.CENTER);
         setVisible(true);

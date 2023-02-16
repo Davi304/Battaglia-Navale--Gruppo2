@@ -6,5 +6,4 @@ public class Battaglia_Navale
         Regolamento regolamento = new Regolamento();
         
     }
-    
 }

@@ -11,22 +11,28 @@ public class Regolamento extends JFrame implements ActionListener
     JSpinner turni = new JSpinner(valori);
 
     Font f = new Font("Comic Sans", Font.CENTER_BASELINE,16);
-        
+    Font f2 = new Font("Impact", Font.CENTER_BASELINE,20);
+    
     JButton gioca = new JButton("Gioca");
+    
+
 
     String[] testo = new String[4];
     
 
     public Regolamento()
     {
-    
+        gioca.setForeground(Color.WHITE);
         for(int i=0; i<4; i++)
         {
             regolamento[i] = new JLabel();
             regolamento[i].setFont(f);
         }
+        regolamento[0].setFont(f2);
         testo[0] = " REGOLAMENTO :\n";
         regolamento[0].setText(testo[0]);
+        regolamento[0].setForeground(Color.WHITE);
+
         testo[1] =" Hai un massimo di turni, dopo il quale se non hai affondato tutte le navi perdi. ( e' consigliato lasciare 45 turni)";
         regolamento[1].setText(testo[1]);
         testo[2] =" Devi affondare 5 navi ( 15 caselle in totale ) la grandezza delle navi puo' essere : 1; 2; 3; 4 oppure 5" ;
