@@ -3,6 +3,7 @@ import java.awt.*;
 
 public class Vittoria_sconfitta extends JFrame
 {
+    
     JPanel testoRisultato = new JPanel(new GridLayout(3,3));
     JLabel info = new JLabel();
     Font f = new Font("Impact", Font.CENTER_BASELINE,40);
@@ -11,6 +12,7 @@ public class Vittoria_sconfitta extends JFrame
     {
         if(vittoria_sconfitta==true){
             info.setFont(f);
+            info.setForeground(Color.YELLOW);
             info.setText("HAI VINTO !!!");
         }
         

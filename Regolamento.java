@@ -10,7 +10,7 @@ public class Regolamento extends JFrame implements ActionListener
     SpinnerModel valori = new SpinnerNumberModel(45,1,99,1);
     JSpinner turni = new JSpinner(valori);
 
-    Font f = new Font("Comic Sans", Font.CENTER_BASELINE,15);
+    Font f = new Font("Comic Sans", Font.CENTER_BASELINE,16);
         
     JButton gioca = new JButton("Gioca");
 
@@ -25,7 +25,7 @@ public class Regolamento extends JFrame implements ActionListener
             regolamento[i] = new JLabel();
             regolamento[i].setFont(f);
         }
-        testo[0] = " Regolamento";
+        testo[0] = " REGOLAMENTO :\n";
         regolamento[0].setText(testo[0]);
         testo[1] =" Hai un massimo di turni, dopo il quale se non hai affondato tutte le navi perdi. ( e' consigliato lasciare 45 turni)";
         regolamento[1].setText(testo[1]);
