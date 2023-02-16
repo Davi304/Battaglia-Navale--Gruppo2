@@ -35,7 +35,7 @@ public class Regolamento extends JFrame implements ActionListener
         regolamento[3].setText(testo[3]);
         
         
-
+        panelTurni.setBackground(Color.PINK);
         gioca.setFont(f);
         gioca.setBackground(new Color(255,128,0));
         gioca.addActionListener(this);
