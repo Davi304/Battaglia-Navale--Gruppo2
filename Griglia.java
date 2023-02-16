@@ -5,8 +5,7 @@ import java.util.Random;
 
 public class Griglia extends JFrame implements ActionListener
 {
-    //public final int numTurni=45;
-
+   
     int numTurni;
     JFrame risultato = new JFrame();
     JPanel testoRisultato = new JPanel(new GridLayout(1,1));
@@ -30,6 +29,7 @@ public class Griglia extends JFrame implements ActionListener
     public Griglia(int numTurni)
     {
         this.numTurni = numTurni;
+
         //Bottoni
         creaBottoni();
         
@@ -54,7 +54,7 @@ public class Griglia extends JFrame implements ActionListener
         add(testo, BorderLayout.NORTH);
         setTitle("Battaglia navale");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(650, 600);
+        setSize(800, 750);
         setVisible(true);
         setLocationRelativeTo(null);
 
@@ -70,7 +70,7 @@ public class Griglia extends JFrame implements ActionListener
             for(int j=1; j<11; j++)
             {
                 bottone[i][j] = new Bottoni((i-1), (j-1));
-                bottone[i][j].setBackground(Color.BLUE);
+                bottone[i][j].setBackground(new Color(0, 29, 64));
                 bottone[i][j].setFont(f);
 
                 bottone[i][j].addActionListener(this);
@@ -261,8 +261,6 @@ public class Griglia extends JFrame implements ActionListener
 
             Vittoria_sconfitta vittoria_sconfitta= new Vittoria_sconfitta(false);
         }
-
-        //chiudere la finestra dopo tot secondi
     }
 
     public void actionPerformed(ActionEvent e) 
@@ -318,7 +316,7 @@ public class Griglia extends JFrame implements ActionListener
                 else
                 {
                     //bottone
-                    ((Bottoni) e.getSource()).setBackground(Color.CYAN);
+                    ((Bottoni) e.getSource()).setBackground(new Color(38,97,155));
 
                     //testo
                     counter.setText("ACQUA...");

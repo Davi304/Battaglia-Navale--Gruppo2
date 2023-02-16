@@ -9,7 +9,6 @@ public class Vittoria_sconfitta extends JFrame
 
     public Vittoria_sconfitta(boolean vittoria_sconfitta)
     {
-        
         if(vittoria_sconfitta==true){
             info.setFont(f);
             info.setText("HAI VINTO !!!");
@@ -22,7 +21,7 @@ public class Vittoria_sconfitta extends JFrame
         
 
         add(testoRisultato,BorderLayout.CENTER);
-        setSize(650,600);
+        setSize(250,200);
         testoRisultato.add(info,BorderLayout.CENTER);
         setVisible(true);
         setLocationRelativeTo(null);

@@ -1,16 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
 
 public class Regolamento extends JFrame implements ActionListener
 {
     JPanel panelTurni = new JPanel(new GridLayout(1,2));
     JPanel panelRegolamento = new JPanel();
-    JLabel regolamento = new JLabel();
-    //JTextField turni = new JTextField(15);
+    JLabel regolamento[] = new JLabel[4];
     SpinnerModel valori = new SpinnerNumberModel(45,1,99,1);
     JSpinner turni = new JSpinner(valori);
 
@@ -18,39 +14,27 @@ public class Regolamento extends JFrame implements ActionListener
         
     JButton gioca = new JButton("Gioca");
 
-<<<<<<< HEAD
     String[] testo = new String[4];
     
-=======
-    String testo = "regolamento";
->>>>>>> a63302615ba164c06b8a8d51f6d5cbec5dc4cee1
 
     public Regolamento()
     {
-        /*try 
+    
+        for(int i=0; i<4; i++)
         {
-            File file = new File("regolamento.txt");
-            Scanner scannerRegolamento = new Scanner(file);
-
-            while(scannerRegolamento.hasNext())
-            {
-                testo += scannerRegolamento.nextLine();
-            }
-
-            scannerRegolamento.close();
-        } 
-        catch (FileNotFoundException e) 
-        {
-            e.printStackTrace();
-        }*/
-
+            regolamento[i] = new JLabel();
+            regolamento[i].setFont(f);
+        }
         testo[0] = " Regolamento";
+        regolamento[0].setText(testo[0]);
         testo[1] =" Hai un massimo di turni, dopo il quale se non hai affondato tutte le navi perdi. ( e' consigliato lasciare 45 turni)";
+        regolamento[1].setText(testo[1]);
         testo[2] =" Devi affondare 5 navi ( 15 caselle in totale ) la grandezza delle navi puo' essere : 1; 2; 3; 4 oppure 5" ;
+        regolamento[2].setText(testo[2]);
         testo[3] =" Se la nave viene colpita la casella diventera' rossa con una x in centro, se si colpisce a vuoto diventa azzurra";
+        regolamento[3].setText(testo[3]);
         
-        regolamento.setFont(f);
-        regolamento.setText(testo);
+        
 
         gioca.setFont(f);
         gioca.setBackground(new Color(255,128,0));
@@ -58,18 +42,17 @@ public class Regolamento extends JFrame implements ActionListener
 
         turni.setFont(f);
 
-        panelRegolamento.add(regolamento);
-<<<<<<< Updated upstream
+        panelRegolamento.add(regolamento[0]);
+        panelRegolamento.add(regolamento[1]);
+        panelRegolamento.add(regolamento[2]);
+        panelRegolamento.add(regolamento[3]);
         panelTurni.add(turni);
         panelTurni.add(gioca);
-=======
-        panelTurni();
->>>>>>> Stashed changes
         add(panelRegolamento, BorderLayout.CENTER);
         add(panelTurni, BorderLayout.SOUTH);
         setTitle("Regolamento");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(650, 600);
+        setSize(800, 300);
         setVisible(true);
         setLocationRelativeTo(null);
 
