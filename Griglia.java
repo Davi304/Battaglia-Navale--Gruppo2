@@ -59,9 +59,6 @@ public class Griglia extends JFrame implements ActionListener
         //setSize(800, 750);
         setVisible(true);
         setLocationRelativeTo(null);
-
-        
-        
     }
 
     public void creaBottoni() 
