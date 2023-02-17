@@ -7,7 +7,7 @@ public class Vittoria_sconfitta extends JFrame
     JPanel testoRisultato = new JPanel();
     JLabel infoVittoria = new JLabel(new ImageIcon("Immagini/Vittoria.png"));
     JLabel info = new JLabel(new ImageIcon("Immagini/GAME-OVER.jpg"));
-    Font f = new Font("Impact", Font.CENTER_BASELINE,60);
+    //Font f = new Font("Impact", Font.CENTER_BASELINE,60);
 
     public Vittoria_sconfitta(boolean vittoria_sconfitta)
     {

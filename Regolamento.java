@@ -15,8 +15,6 @@ public class Regolamento extends JFrame implements ActionListener
     
     JButton gioca = new JButton("Gioca");
     
-
-
     String[] testo = new String[4];
     
 
