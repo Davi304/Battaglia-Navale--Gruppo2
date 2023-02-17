@@ -4,19 +4,23 @@ import java.awt.*;
 public class Vittoria_sconfitta extends JFrame
 {
     
-    JPanel testoRisultato = new JPanel(new GridLayout(3,3));
+    JPanel testoRisultato = new JPanel();
     JLabel info = new JLabel();
     Font f = new Font("Impact", Font.CENTER_BASELINE,60);
 
     public Vittoria_sconfitta(boolean vittoria_sconfitta)
     {
-        if(vittoria_sconfitta==true){
+        if(vittoria_sconfitta==true)
+        {
+            setTitle("Vittoria");
             info.setFont(f);
             info.setForeground(Color.YELLOW);
             info.setText("HAI VINTO !!!");
         }
         
-        else if(vittoria_sconfitta==false){
+        else if(vittoria_sconfitta==false)
+        {
+            setTitle("Sconfitta");
             info.setFont(f);
             info.setForeground(Color.RED);
             info.setText("...GAME OVER...");
@@ -24,7 +28,7 @@ public class Vittoria_sconfitta extends JFrame
         
 
         add(testoRisultato,BorderLayout.CENTER);
-        setSize(300,200);
+        setSize(400,300);
         testoRisultato.setBackground(new Color(0,0,0));
         testoRisultato.add(info,BorderLayout.CENTER);
         setVisible(true);

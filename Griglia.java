@@ -253,7 +253,7 @@ public class Griglia extends JFrame implements ActionListener
         {
             try 
             {
-                Thread.sleep(5000);
+                Thread.sleep(3000);
             } 
             catch (InterruptedException e) 
             {
