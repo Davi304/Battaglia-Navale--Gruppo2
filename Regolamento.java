@@ -11,7 +11,7 @@ public class Regolamento extends JFrame implements ActionListener
     JSpinner turni = new JSpinner(valori);
 
     Font f = new Font("Comic Sans", Font.CENTER_BASELINE,16);
-    Font f2 = new Font("Impact", Font.CENTER_BASELINE,20);
+    Font f2 = new Font("Arial", Font.CENTER_BASELINE,20);
     
     JButton gioca = new JButton("Gioca");
     
