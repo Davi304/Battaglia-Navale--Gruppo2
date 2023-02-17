@@ -37,7 +37,7 @@ public class Regolamento extends JFrame implements ActionListener
         regolamento[1].setText(testo[1]);
         testo[2] =" Devi affondare 5 navi ( 15 caselle in totale ) la grandezza delle navi puo' essere : 1; 2; 3; 4 oppure 5" ;
         regolamento[2].setText(testo[2]);
-        testo[3] =" Se la nave viene colpita la casella diventera' rossa con una x in centro, se si colpisce a vuoto diventa azzurra";
+        testo[3] =" Se la nave viene colpita la casella diventera' rossa con una 'X' in centro, se si colpisce a vuoto diventa azzurra";
         regolamento[3].setText(testo[3]);
         
         
