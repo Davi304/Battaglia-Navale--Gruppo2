@@ -27,7 +27,6 @@ public class Vittoria_sconfitta extends JFrame
             info.setIcon(new ImageIcon("Immagini/GAME-OVER.jpg"));
         }
         
-
         add(testoRisultato,BorderLayout.CENTER);
         setSize(639,400);
         setVisible(true);
