@@ -7,7 +7,6 @@ public class Griglia extends JFrame implements ActionListener
 {
    
     int numTurni;
-    JFrame risultato = new JFrame();
     JPanel testoRisultato = new JPanel(new GridLayout(1,1));
     JPanel panelCaselle = new JPanel(new GridLayout(11,11));
     JPanel testo = new JPanel(new GridLayout(2,1));
@@ -55,8 +54,8 @@ public class Griglia extends JFrame implements ActionListener
         add(testo, BorderLayout.NORTH);
         setTitle("Battaglia navale");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setExtendedState(JFrame.MAXIMIZED_BOTH); 
-        //setSize(800, 750);
+        //setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        setSize(800, 750);
         setVisible(true);
         setLocationRelativeTo(null);
     }
