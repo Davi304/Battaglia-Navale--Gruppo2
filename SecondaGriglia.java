@@ -3,6 +3,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.Random;
 
+
+//non abbiamo abbastanza tempo per finirlo
 public class SecondaGriglia extends JFrame implements ActionListener
 {
     Bottoni[][] bottone  = new Bottoni[11][11];

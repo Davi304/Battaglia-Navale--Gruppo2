@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class Regolamento extends JFrame implements ActionListener
 {
-    JPanel panelTurni = new JPanel(new GridLayout(1,2));
+    JPanel panelTurni = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
     JPanel panelRegolamento = new JPanel();
     JLabel regolamento[] = new JLabel[4];
     SpinnerModel valori = new SpinnerNumberModel(45,1,99,1);
@@ -20,6 +20,8 @@ public class Regolamento extends JFrame implements ActionListener
 
     public Regolamento()
     {
+
+        //regolamento
         gioca.setForeground(Color.WHITE);
         for(int i=0; i<4; i++)
         {
@@ -38,23 +40,27 @@ public class Regolamento extends JFrame implements ActionListener
         testo[3] =" Se la nave viene colpita la casella diventera' rossa con una 'X' in centro, se si colpisce a vuoto diventa azzurra";
         regolamento[3].setText(testo[3]);
         
-        
+        //tasto
         panelTurni.setBackground(Color.PINK);
         gioca.setFont(f);
         gioca.setBackground(new Color(38,97,155));
         gioca.addActionListener(this);
 
+        //spinner
         turni.setFont(f);
+
+        //panel
         panelRegolamento.setBackground(new Color(255,122,122));
         panelRegolamento.add(regolamento[0]);
         panelRegolamento.add(regolamento[1]);
         panelRegolamento.add(regolamento[2]);
         panelRegolamento.add(regolamento[3]);
 
-
         panelTurni.add(turni);
         panelTurni.add(gioca);
+        panelTurni.setBackground(new Color(255,122,122));
        
+        //frame
         add(panelRegolamento, BorderLayout.CENTER);
         add(panelTurni, BorderLayout.SOUTH);
         setTitle("Regolamento");
