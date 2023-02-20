@@ -54,7 +54,7 @@ public class Griglia extends JFrame implements ActionListener
         add(testo, BorderLayout.NORTH);
         setTitle("Battaglia navale");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800, 750);
+        setSize(800, 700);
         setVisible(true);
         setLocationRelativeTo(null);
     }
@@ -303,8 +303,9 @@ public class Griglia extends JFrame implements ActionListener
                 {
                     contatore2++;
                     //bottone
-                    ((Bottoni) e.getSource()).setBackground(new Color(178,28,59));                    
-                    ((Bottoni) e.getSource()).setText("O");
+                    ((Bottoni) e.getSource()).setBackground(new Color(178,28,59)); 
+                    ((Bottoni) e.getSource()).setFont(f);                  
+                    ((Bottoni) e.getSource()).setText("X");
 
                     //testi
                     counter.setText("COLPITO !!!");
