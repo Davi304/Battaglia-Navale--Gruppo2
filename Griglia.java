@@ -241,12 +241,13 @@ public class Griglia extends JFrame implements ActionListener
             {
                 e.printStackTrace();
             }
-                
+            setVisible(false);
             Vittoria_sconfitta vittoria_sconfitta = new Vittoria_sconfitta(true);
         }
 
         if(contatore == numTurni)
         {
+            
             try 
             {
                 Thread.sleep(500);
@@ -255,7 +256,7 @@ public class Griglia extends JFrame implements ActionListener
             {
                 e.printStackTrace();
             }
-
+            setVisible(false);
             Vittoria_sconfitta vittoria_sconfitta= new Vittoria_sconfitta(false);
         }
     }
