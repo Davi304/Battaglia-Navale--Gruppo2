@@ -2,10 +2,22 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Random;
+import java.io.*;
+import java.net.*;
+import java.nio.ByteBuffer;
+
 
 public class Griglia extends JFrame implements ActionListener
 {
-   
+    //client
+    int serverPort = 2000;
+    InetAddress serverAddress;
+    DatagramSocket dSocket;
+    DatagramPacket outPacket;
+    DatagramPacket inPacket;
+
+
+    //
     int numTurni;
     JPanel testoRisultato = new JPanel(new GridLayout(1,1));
     JPanel panelCaselle = new JPanel(new GridLayout(11,11));
@@ -47,6 +59,7 @@ public class Griglia extends JFrame implements ActionListener
         info2.setText("Punti colpiti: 0/15");
         counter.setFont(f);
         infoAffondata.setFont(f);
+        
         infoAffondata.setText("Navi affondate: 0/5");
 
         //Frame
@@ -57,6 +70,7 @@ public class Griglia extends JFrame implements ActionListener
         setSize(800, 700);
         setVisible(true);
         setLocationRelativeTo(null);
+
     }
 
     public void creaBottoni() 
@@ -127,7 +141,7 @@ public class Griglia extends JFrame implements ActionListener
 
         for(int i=0; i<5; i++) //creazione delle navi
         {
-            
+            //da spostare nel server
             do
             {
                 indice = i;
@@ -182,7 +196,37 @@ public class Griglia extends JFrame implements ActionListener
                 }
 
             }while(controllaPosizione(posizioneX, posizioneY, indice, orizontale, grandezza) == false);
+            //---------------------------------
 
+            int grandezzaBuffer = 25 * Integer.BYTES;
+
+            ByteBuffer buffer = ByteBuffer.allocate(grandezzaBuffer);
+
+            for(int a=0; a<5; a++)
+            {
+                for(int b=0; b<5; b++)
+                {
+                    buffer.putInt(posizioneX[a][b]);
+                }
+            }
+
+            byte[] bPosX = buffer.array();
+
+            try
+            {
+                dSocket = new DatagramSocket(serverPort);
+                outPacket = new DatagramPacket(bPosX, bPosX.length, serverAddress, serverPort);
+
+                dSocket.send(outPacket);
+
+            }
+            catch(IOException e)
+            {
+                System.out.println(e);
+            }
+            
+
+            //---------------------------------------
             if(orizontale == true)
             {
                 for(int j=0; j<grandezza; j++)
@@ -201,7 +245,7 @@ public class Griglia extends JFrame implements ActionListener
 
         }
     }
-
+//da spostare nel server
     public boolean controllaPosizione(int[][] posizioneX, int[][] posizioneY, int indice, boolean orizontale, int grandezza) //ritorna true se la posizione della nave è libera
     {
         boolean controllaPosizione = true; 
@@ -227,7 +271,7 @@ public class Griglia extends JFrame implements ActionListener
 
         return controllaPosizione;
     }
-
+//----------------------
     public void controllaVittoria()
     {
 
