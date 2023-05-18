@@ -198,7 +198,7 @@ public class Griglia extends JFrame implements ActionListener
             }while(controllaPosizione(posizioneX, posizioneY, indice, orizontale, grandezza) == false);
             //---------------------------------
 
-            int grandezzaBuffer = 25 * Integer.BYTES;
+            /*int grandezzaBuffer = 25 * Integer.BYTES;
 
             ByteBuffer buffer = ByteBuffer.allocate(grandezzaBuffer);
 
@@ -225,7 +225,7 @@ public class Griglia extends JFrame implements ActionListener
                 System.out.println(e);
             }
             
-
+*/
             //---------------------------------------
             if(orizontale == true)
             {
