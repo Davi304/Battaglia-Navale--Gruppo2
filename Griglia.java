@@ -325,7 +325,14 @@ public class Griglia extends JFrame implements ActionListener
                 y = ((Bottoni) e.getSource()).getCoordinataY();
 
                 ((Bottoni) e.getSource()).pulsantePremuto(); //segna il pulsante come premuto
-            
+                
+                //invia le coordinate
+
+                //attende risposta e modifica la griglia personale
+
+                //aspetta le coordinate dell'altro
+
+                //controlla se è colpito o affondato e risponde
                
                 for(int i=0; i<5; i++)
                 {
