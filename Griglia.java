@@ -15,6 +15,7 @@ public class Griglia extends JFrame implements ActionListener
     DatagramSocket dSocket;
     DatagramPacket outPacket;
     DatagramPacket inPacket;
+    byte[] buffer;
 
 
     //
@@ -35,7 +36,7 @@ public class Griglia extends JFrame implements ActionListener
     boolean affondata;
     boolean[][] griglia = new boolean[10][10];
     Font f = new Font("Comic Sans", Font.CENTER_BASELINE,20);
-
+    Griglia_personale griglia_personale = new Griglia_personale(numTurni);
 
     public Griglia(int numTurni)
     {
@@ -43,9 +44,9 @@ public class Griglia extends JFrame implements ActionListener
 
         //Bottoni
         creaBottoni();
+
         
-        //Navi
-        creaNavi(); //codice che crea le navi
+        
      
         //panel
         testo.setBackground(new Color(255,255,255));
@@ -129,148 +130,7 @@ public class Griglia extends JFrame implements ActionListener
         }
     }
 
-    public void creaNavi()
-    {
-        for(int i=0; i<10; i++)
-        {
-            for(int j=0; j<10; j++)
-            {
-                griglia[i][j] = false; //setta tutta la griglia su false perchè non ci sono ancora navi
-            }
-        }
-
-        for(int i=0; i<5; i++) //creazione delle navi
-        {
-            //da spostare nel server
-            do
-            {
-                indice = i;
-
-                grandezza = i+1; //sceglie la grandezza
-
-                orizontale = rand.nextBoolean(); //decide se è orizzontale o verticale
-
-                if(orizontale == true) //orizzontale
-                {
-                    posizioneX[0][indice] = rand.nextInt(10);
-                
-                    if(posizioneX[0][indice] < 5)
-                    {
-                        for(int j=1; j<grandezza; j++)
-                        {
-                            posizioneX[j][indice] = posizioneX[j-1][indice] + 1;
-                        }
-                    }
-                    else
-                    {
-                        for(int j=1; j<grandezza; j++)
-                        {
-                            posizioneX[j][indice] = posizioneX[j-1][indice] - 1;
-                        }
-                    }
-
-                    posizioneY[0][indice] = rand.nextInt(10);
-                }
-                
-
-                else    //verticale
-                {
-                    posizioneY[0][indice] = rand.nextInt(10);
-                
-                    if(posizioneY[0][indice] < 5)
-                    {
-                        for(int j=1; j<grandezza; j++)
-                        {
-                            posizioneY[j][indice] = posizioneY[j-1][indice] + 1;
-                        }
-                    }
-                    else
-                    {
-                        for(int j=1; j<grandezza; j++)
-                        {
-                            posizioneY[j][indice] = posizioneY[j-1][indice] - 1;
-                        }
-                    }
-
-                    posizioneX[0][indice] = rand.nextInt(10);
-                }
-
-            }while(controllaPosizione(posizioneX, posizioneY, indice, orizontale, grandezza) == false);
-            //---------------------------------
-
-            /*int grandezzaBuffer = 25 * Integer.BYTES;
-
-            ByteBuffer buffer = ByteBuffer.allocate(grandezzaBuffer);
-
-            for(int a=0; a<5; a++)
-            {
-                for(int b=0; b<5; b++)
-                {
-                    buffer.putInt(posizioneX[a][b]);
-                }
-            }
-
-            byte[] bPosX = buffer.array();
-
-            try
-            {
-                dSocket = new DatagramSocket(serverPort);
-                outPacket = new DatagramPacket(bPosX, bPosX.length, serverAddress, serverPort);
-
-                dSocket.send(outPacket);
-
-            }
-            catch(IOException e)
-            {
-                System.out.println(e);
-            }
-            
-*/
-            //---------------------------------------
-            if(orizontale == true)
-            {
-                for(int j=0; j<grandezza; j++)
-                {
-                    griglia[posizioneX[j][indice]][posizioneY[0][indice]] = true; //inserisce nella griglia le navi
-                }
-            }
-            else
-            {
-                for(int j=0; j<grandezza; j++)
-                {
-                    griglia[posizioneX[0][indice]][posizioneY[j][indice]] = true; //inserisce nella griglia le navi
-                }
-            }
-            navi[i] = new Nave(posizioneX, posizioneY, indice,grandezza, orizontale);
-
-        }
-    }
-//da spostare nel server
-    public boolean controllaPosizione(int[][] posizioneX, int[][] posizioneY, int indice, boolean orizontale, int grandezza) //ritorna true se la posizione della nave è libera
-    {
-        boolean controllaPosizione = true; 
-
-        for(int i=0; i<grandezza; i++)
-        {
-            if(orizontale == true) //la nave è orizzontale
-            {
-                if(griglia[posizioneX[i][indice]][posizioneY[0][indice]] == true) //se è true vuol dire che c'è gia un'altra nave
-                {
-                    controllaPosizione = false; //lo mette a false per dire che lo spazio è gia occupato
-                }
-            }
-
-            else //la nave è verticale
-            {
-                if(griglia[posizioneX[0][indice]][posizioneY[i][indice]] == true) //se è true vuol dire che c'è gia un'altra nave
-                {
-                    controllaPosizione = false; //lo mette a false per dire che lo spazio è gia occupato
-                }
-            }
-        }
-
-        return controllaPosizione;
-    }
+  
 //----------------------
     public void controllaVittoria()
     {
@@ -327,6 +187,15 @@ public class Griglia extends JFrame implements ActionListener
                 ((Bottoni) e.getSource()).pulsantePremuto(); //segna il pulsante come premuto
                 
                 //invia le coordinate
+                try
+                {
+                    dSocket = new DatagramSocket();
+                }
+                catch(IOException a)
+                {
+                    System.out.println(a);
+                }
+
 
                 //attende risposta e modifica la griglia personale
 
@@ -334,15 +203,7 @@ public class Griglia extends JFrame implements ActionListener
 
                 //controlla se è colpito o affondato e risponde
                
-                for(int i=0; i<5; i++)
-                {
-                    if(navi[i].colpito(x, y) == true)
-                    {
-                        colpito = true;
-
-                        affondata = navi[i].affondata(); //controlla se la nave è stata affondata
-                    }
-                }
+                colpito = griglia_personale.controllaNavi(x, y);
 
                 //se la nave è stata affondata lo segna
                 if(affondata == true)

@@ -86,6 +86,7 @@ public class Regolamento extends JFrame implements ActionListener
         }
 
         Griglia griglia = new Griglia(numTurni);
+        
         dispose();
     }
     
