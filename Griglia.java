@@ -10,15 +10,17 @@ import java.nio.ByteBuffer;
 public class Griglia extends JFrame implements ActionListener
 {
     //client
-    int serverPort = 2000;
-    InetAddress serverAddress;
+    int Port = 2000;
+    InetAddress serverAddress; // indirizzo dell'altro
+    int chiParte = 1; //0 parte per primo - 1 va per secondo
     DatagramSocket dSocket;
     DatagramPacket outPacket;
     DatagramPacket inPacket;
-    byte[] buffer;
+    byte[] rispostaByte = new byte[256];
+    String[] risposta;
 
 
-    //
+    
     int numTurni;
     JPanel testoRisultato = new JPanel(new GridLayout(1,1));
     JPanel panelCaselle = new JPanel(new GridLayout(11,11));
@@ -44,10 +46,7 @@ public class Griglia extends JFrame implements ActionListener
 
         //Bottoni
         creaBottoni();
-
-        
-        
-     
+                  
         //panel
         testo.setBackground(new Color(255,255,255));
         testo.add(counter,BorderLayout.WEST);
@@ -68,9 +67,9 @@ public class Griglia extends JFrame implements ActionListener
         add(testo, BorderLayout.NORTH);
         setTitle("Battaglia navale");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800, 700);
+
         setVisible(true);
-        setLocationRelativeTo(null);
+        setBounds(100, 200, 800, 700);
 
     }
 
@@ -168,6 +167,7 @@ public class Griglia extends JFrame implements ActionListener
     public void actionPerformed(ActionEvent e) 
     {
         boolean colpito = false;
+        String colpitoString = "";
         affondata = false; //resetta affondata
 
         if(e.getSource() instanceof Bottoni) //capisce se è stato premuto un bottone
@@ -179,31 +179,83 @@ public class Griglia extends JFrame implements ActionListener
                 contatore++;
                 info.setText("Colpi sparati: " + contatore + "/" + numTurni);
                 
-
                 //prendo i valori della x e della y del bottone schiacciato
                 x = ((Bottoni) e.getSource()).getCoordinataX();
                 y = ((Bottoni) e.getSource()).getCoordinataY();
 
                 ((Bottoni) e.getSource()).pulsantePremuto(); //segna il pulsante come premuto
                 
-                //invia le coordinate
-                try
+                if(chiParte == 0) // solamente quello che parte può inviare il segnale
                 {
-                    dSocket = new DatagramSocket();
+                    String coordinate = String.valueOf(x) + "-" + String.valueOf(y);
+
+                    //invia le coordinate - in teoria è a posto
+                    try
+                    {
+                        dSocket = new DatagramSocket();
+                        outPacket = new DatagramPacket(coordinate.getBytes(), coordinate.length(), serverAddress, Port);
+                        //server Address va sostituito
+    
+                        dSocket.send(outPacket);
+                    }
+                    catch(IOException a)
+                    {
+                        System.out.println(a);
+                    }
+    
+                    //attende risposta e modifica la griglia personale
+                    try 
+                    {
+                        inPacket = new DatagramPacket(rispostaByte, rispostaByte.length);
+    
+                        dSocket.receive(inPacket);
+    
+                        colpitoString = new String(inPacket.getData(), 0, inPacket.getLength());
+    
+                        if(colpitoString == "true")
+                        {
+                            colpito = true;
+                        }
+                        else
+                        {
+                            colpito = false;
+                        }
+    
+                        griglia_personale.modificaColpo(x, y, colpito);
+    
+                    } catch (IOException b) 
+                    {
+                        System.out.println(b);
+                    }
+    
                 }
-                catch(IOException a)
-                {
-                    System.out.println(a);
-                }
 
-
-                //attende risposta e modifica la griglia personale
-
+                chiParte = 0; //lo mette a 0, perchè tanto ormai sono gia sfalzati in modo giusto
+                
                 //aspetta le coordinate dell'altro
+                try 
+                {
+                    inPacket = new DatagramPacket(rispostaByte,rispostaByte.length);
 
+                    dSocket.receive(inPacket);
+
+                    risposta = (new String(inPacket.getData(), 0, inPacket.getLength())).split("-");
+
+                } catch (IOException c) 
+                {
+                    System.out.println(c);
+                }
                 //controlla se è colpito o affondato e risponde
-               
-                colpito = griglia_personale.controllaNavi(x, y);
+                try 
+                {
+                    String comodo = griglia_personale.controllaNavi(Integer.parseInt(risposta[0]), Integer.parseInt(risposta[1]));
+                    outPacket = new DatagramPacket(comodo.getBytes(), comodo.length(), serverAddress, Port);
+
+                    dSocket.send(outPacket);
+                } catch (IOException d) 
+                {
+                    System.out.println(d);
+                }
 
                 //se la nave è stata affondata lo segna
                 if(affondata == true)
@@ -211,7 +263,9 @@ public class Griglia extends JFrame implements ActionListener
                     numNaviAffondate++;
                     infoAffondata.setText("Navi affondate: " + numNaviAffondate + "/5");
                 }
-                         
+                        
+                
+
                 if(colpito == true)
                 {
                     contatore2++;

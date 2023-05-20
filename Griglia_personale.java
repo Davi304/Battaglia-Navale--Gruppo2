@@ -58,6 +58,7 @@ public class Griglia_personale extends JFrame
         setSize(800, 700);
         setVisible(true);
         setLocationRelativeTo(null);
+        setBounds(960, 200, 800, 700);
 
     }
 
@@ -243,20 +244,32 @@ public class Griglia_personale extends JFrame
         }
     }
 
-    public boolean controllaNavi(int x, int y)
+    public String controllaNavi(int x, int y)
     {
-        boolean colpito = false;
+        String colpito = "false";
 
         for(int i=0; i<5; i++)
         {
             if(navi[i].colpito(x, y) == true)
             {
-                colpito = true;
+                colpito = "true";
 
                 affondata = navi[i].affondata(); //controlla se la nave è stata affondata
             }
         }
 
         return colpito;
+    }
+
+    public void modificaColpo(int x, int y, boolean colpito)
+    {
+        if(colpito == true)
+        {
+            bottone[x][y].setText("X");
+        }
+        else
+        {
+            bottone[x][y].setBackground(new Color(38,97,155));
+        }
     }
 }
