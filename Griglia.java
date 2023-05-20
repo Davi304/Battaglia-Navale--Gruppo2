@@ -11,8 +11,10 @@ public class Griglia extends JFrame implements ActionListener
 {
     //client
     int Port = 2000;
+
     InetAddress serverAddress; // indirizzo dell'altro
     int chiParte = 1; //0 parte per primo - 1 va per secondo
+
     DatagramSocket dSocket;
     DatagramPacket outPacket;
     DatagramPacket inPacket;
@@ -65,7 +67,7 @@ public class Griglia extends JFrame implements ActionListener
         //Frame
         add(panelCaselle, BorderLayout.CENTER);
         add(testo, BorderLayout.NORTH);
-        setTitle("Battaglia navale");
+        setTitle("Navi avversarie");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         setVisible(true);
@@ -129,8 +131,6 @@ public class Griglia extends JFrame implements ActionListener
         }
     }
 
-  
-//----------------------
     public void controllaVittoria()
     {
 
@@ -174,7 +174,6 @@ public class Griglia extends JFrame implements ActionListener
         {
             if( ((Bottoni) e.getSource()).getPremuto() == false) //controlla se il bottone è già stato premuto
             {
-
                 //aumenta il contatore
                 contatore++;
                 info.setText("Colpi sparati: " + contatore + "/" + numTurni);
@@ -264,8 +263,6 @@ public class Griglia extends JFrame implements ActionListener
                     infoAffondata.setText("Navi affondate: " + numNaviAffondate + "/5");
                 }
                         
-                
-
                 if(colpito == true)
                 {
                     contatore2++;

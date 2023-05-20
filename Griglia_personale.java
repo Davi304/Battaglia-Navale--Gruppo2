@@ -53,7 +53,7 @@ public class Griglia_personale extends JFrame
         //Frame
         add(panelCaselle, BorderLayout.CENTER);
         add(testo, BorderLayout.NORTH);
-        setTitle("Battaglia navale");
+        setTitle("Navi personali");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 700);
         setVisible(true);
