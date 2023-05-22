@@ -64,6 +64,15 @@ public class Griglia extends JFrame implements ActionListener
         
         infoAffondata.setText("Navi affondate: 0/5");
 
+
+        if(chiParte == 1) //chi non parte, gli attiva in automatico tutta la procedura
+        {
+            bottone[0][0].addActionListener(this);
+            bottone[0][0].doClick();
+            bottone[0][0].removeActionListener(this);
+        }
+        
+
         //Frame
         add(panelCaselle, BorderLayout.CENTER);
         add(testo, BorderLayout.NORTH);
@@ -174,18 +183,19 @@ public class Griglia extends JFrame implements ActionListener
         {
             if( ((Bottoni) e.getSource()).getPremuto() == false) //controlla se il bottone è già stato premuto
             {
-                //aumenta il contatore
-                contatore++;
-                info.setText("Colpi sparati: " + contatore + "/" + numTurni);
                 
-                //prendo i valori della x e della y del bottone schiacciato
-                x = ((Bottoni) e.getSource()).getCoordinataX();
-                y = ((Bottoni) e.getSource()).getCoordinataY();
-
                 ((Bottoni) e.getSource()).pulsantePremuto(); //segna il pulsante come premuto
                 
                 if(chiParte == 0) // solamente quello che parte può inviare il segnale
                 {
+                    //aumenta il contatore
+                    contatore++;
+                    info.setText("Colpi sparati: " + contatore + "/" + numTurni);
+                
+                    //prendo i valori della x e della y del bottone schiacciato
+                    x = ((Bottoni) e.getSource()).getCoordinataX();
+                    y = ((Bottoni) e.getSource()).getCoordinataY();
+
                     String coordinate = String.valueOf(x) + "-" + String.valueOf(y);
 
                     //invia le coordinate - in teoria è a posto
@@ -293,7 +303,5 @@ public class Griglia extends JFrame implements ActionListener
                 //Il pulsante è gia stato premuto
             }
         }
-        
-      
     }
 }
