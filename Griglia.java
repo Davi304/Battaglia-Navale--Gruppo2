@@ -9,10 +9,11 @@ import java.nio.ByteBuffer;
 
 public class Griglia extends JFrame implements ActionListener
 {
+    boolean avanti = false;
     //client
     int Port = 2000;
-
-    InetAddress serverAddress; // indirizzo dell'altro
+    InetAddress serverAddress;
+    
     int chiParte = 1; //0 parte per primo - 1 va per secondo
 
     DatagramSocket dSocket;
@@ -44,6 +45,18 @@ public class Griglia extends JFrame implements ActionListener
 
     public Griglia(int numTurni)
     {
+        
+        while(avanti == false){
+        try {
+            serverAddress = InetAddress.getByName("172.20.10.7"); // indirizzo dell'altro
+            avanti = true;
+        } catch (Exception e) {
+            System.out.println(e);
+            avanti = false;
+        }
+        }
+        
+
         this.numTurni = numTurni;
 
         //Bottoni
@@ -64,15 +77,6 @@ public class Griglia extends JFrame implements ActionListener
         
         infoAffondata.setText("Navi affondate: 0/5");
 
-
-        if(chiParte == 1) //chi non parte, gli attiva in automatico tutta la procedura
-        {
-            bottone[0][0].addActionListener(this);
-            bottone[0][0].doClick();
-            bottone[0][0].removeActionListener(this);
-        }
-        
-
         //Frame
         add(panelCaselle, BorderLayout.CENTER);
         add(testo, BorderLayout.NORTH);
@@ -82,6 +86,7 @@ public class Griglia extends JFrame implements ActionListener
         setVisible(true);
         setBounds(100, 200, 800, 700);
 
+        bottone[0][0].addActionListener(this);
     }
 
     public void creaBottoni() 
@@ -181,7 +186,7 @@ public class Griglia extends JFrame implements ActionListener
 
         if(e.getSource() instanceof Bottoni) //capisce se è stato premuto un bottone
         {
-            if( ((Bottoni) e.getSource()).getPremuto() == false) //controlla se il bottone è già stato premuto
+            if(((Bottoni) e.getSource()).getPremuto() == false) //controlla se il bottone è già stato premuto
             {
                 
                 ((Bottoni) e.getSource()).pulsantePremuto(); //segna il pulsante come premuto
@@ -201,7 +206,7 @@ public class Griglia extends JFrame implements ActionListener
                     //invia le coordinate - in teoria è a posto
                     try
                     {
-                        dSocket = new DatagramSocket();
+                        dSocket = new DatagramSocket(Port);
                         outPacket = new DatagramPacket(coordinate.getBytes(), coordinate.length(), serverAddress, Port);
                         //server Address va sostituito
     
@@ -244,6 +249,8 @@ public class Griglia extends JFrame implements ActionListener
                 //aspetta le coordinate dell'altro
                 try 
                 {
+                    dSocket = new DatagramSocket();
+
                     inPacket = new DatagramPacket(rispostaByte,rispostaByte.length);
 
                     dSocket.receive(inPacket);
